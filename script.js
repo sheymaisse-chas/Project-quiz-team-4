@@ -1,3 +1,5 @@
+import { saveResultToLocal, showResults } from "./quizStorage.js";
+
 console.log("Script loaded successfully.");
 
 let questions = [];
@@ -9,7 +11,7 @@ let userAnswers = [];
 const countdownDisplay = document.getElementById("countdown-display");
 const startButton = document.getElementById("start-button");
 
-const TOTAL_TIME_SECONDS = 1; // totala tid
+const TOTAL_TIME_SECONDS = 600; // totala tid
 
 let countdownTime = TOTAL_TIME_SECONDS; //nuvarande tid
 let countdownInterval; //kontroll nyckel, stoppar timern och gör så att man kan börja om
@@ -126,7 +128,7 @@ function waitForAnswer(answerElements) {
 
 // Avsluta quiz och räkna resultat
 // ============================
-function endQuiz(timeOut = false) {
+async function endQuiz(timeOut = false) {
   // --- Timer bortkommenterad tills vidare ---
   clearInterval(countdownInterval);
 
@@ -142,26 +144,18 @@ function endQuiz(timeOut = false) {
 
   console.log(countdownTime);
   const timeUsed = `${Math.floor((TOTAL_TIME_SECONDS - countdownTime) / 60)} min ${(TOTAL_TIME_SECONDS - countdownTime) % 60} sek`;
-  const timeRemaining = `${Math.floor(countdownTime / 60)} min ${countdownTime % 60} sek`;
+  const timeRemaining = countdownTime; // numeriskt för enklare sortering
 
   document.getElementById("score").innerHTML = `
     <strong>Du fick ${correctCount} av ${questions.length} rätt!</strong><br>
     ${timeOut ? "⏰ Tiden tog slut!" : ""}
     <br><br>
     <strong>Tid använd:</strong> ${timeUsed}<br>
-    <strong>Tid kvar:</strong> ${timeRemaining}
+    <strong>Tid kvar:</strong> ${Math.floor(timeRemaining / 60)} min ${timeRemaining % 60} sek
   `;
-
-  // Spara resultat i LocalStorage
-  const previousResults = JSON.parse(localStorage.getItem("quizResults")) || [];
-  previousResults.push({
-    date: new Date().toLocaleString(),
-    score: correctCount,
-    total: questions.length,
-    timeUsed: timeUsed,
-    timeRemaining: timeRemaining,
-  });
-  localStorage.setItem("quizResults", JSON.stringify(previousResults));
+  
+  // spara via modul i localStorage + Firebase
+  await saveResultToLocal(correctCount, questions, timeUsed, timeRemaining);
 }
 
 async function init() {
