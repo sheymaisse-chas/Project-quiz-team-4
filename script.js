@@ -242,7 +242,7 @@ async function showLeaderboard() {
 
     li.innerHTML = `
       <span class="rank">${rankDisplay}</span>
-      <span class="user">${r.username || "Anonym"}</span>
+      <span class="user">${r.userName || "Anonym"}</span>
       <span class="score">${r.score}/${r.total} – ${r.timeUsed}</span>
     `;
 
