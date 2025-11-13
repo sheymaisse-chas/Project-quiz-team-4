@@ -4,10 +4,7 @@
   --text-white: #ffffff;
   --hover-bg: #1a1f27;
   --orange: #fb923c;
-<<<<<<< HEAD
   --correct: green;
-=======
->>>>>>> main
 }
 
 body {
@@ -23,16 +20,6 @@ body {
   font-weight: 700;
 }
 
-<<<<<<< HEAD
-=======
-.timeout {
-  display: none;
-  color: var(--orange);
-  margin-bottom: 2rem;
-  font-size: 24px;
-}
-
->>>>>>> main
 .hidden {
   display: none !important;
 }
@@ -167,9 +154,3 @@ body {
   flex-direction: column;
   align-items: center;
 }
-<<<<<<< HEAD
-=======
-
-.show-start { 
-}
->>>>>>> main
