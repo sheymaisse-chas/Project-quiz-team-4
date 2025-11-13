@@ -4,7 +4,8 @@
     "answers": [
       "<h1>",
       "<h6>",
-      "<p>"
+      "<p>",
+      "<header>"
     ],
     "correct": 0
   },
@@ -13,7 +14,8 @@
     "answers": [
       "<a>",
       "<link>",
-      "<href>"
+      "<href>",
+      "Inget av ovanstående"
     ],
     "correct": 0
   },
@@ -22,7 +24,8 @@
     "answers": [
       "<ul>",
       "<ol>",
-      "<li>"
+      "<li>",
+      "Inget av ovanstående"
     ],
     "correct": 0
   },
@@ -31,7 +34,8 @@
     "answers": [
       "<break>",
       "<br>",
-      "<hr>"
+      "<hr>",
+      "Inget av ovanstående"
     ],
     "correct": 1
   },
@@ -40,7 +44,8 @@
     "answers": [
       "<img>",
       "<src>",
-      "<picture>"
+      "<picture>",
+      "<header>"
     ],
     "correct": 0
   },
@@ -49,7 +54,8 @@
     "answers": [
       "href",
       "src",
-      "alt"
+      "alt",
+      "<figure>"
     ],
     "correct": 1
   },
@@ -58,7 +64,8 @@
     "answers": [
       "HyperText Markup Language",
       "HighText Machine Language",
-      "Home Tool Markup Language"
+      "Home Tool Markup Language",
+      "<header>"
     ],
     "correct": 0
   },
@@ -67,7 +74,8 @@
     "answers": [
       "<table>",
       "<tab>",
-      "<grid>"
+      "<grid>",
+      "<tbody>"
     ],
     "correct": 0
   },
@@ -76,7 +84,8 @@
     "answers": [
       "id",
       "class",
-      "name"
+      "name",
+      "<header>"
     ],
     "correct": 0
   },
@@ -85,7 +94,8 @@
     "answers": [
       "src",
       "href",
-      "link"
+      "link",
+      "Inget av ovanstående"
     ],
     "correct": 1
   },
@@ -94,7 +104,8 @@
     "answers": [
       "color",
       "background-color",
-      "text-color"
+      "text-color",
+      "border"
     ],
     "correct": 0
   },
@@ -103,7 +114,8 @@
     "answers": [
       "color",
       "background-color",
-      "bgcolor"
+      "bgcolor",
+      "border"
     ],
     "correct": 1
   },
@@ -112,7 +124,8 @@
     "answers": [
       "font-size",
       "text-size",
-      "font"
+      "font",
+      "border"
     ],
     "correct": 0
   },
@@ -121,7 +134,8 @@
     "answers": [
       "/* kommentar */",
       "// kommentar",
-      "# kommentar"
+      "# kommentar",
+      "display"
     ],
     "correct": 0
   },
@@ -130,7 +144,8 @@
     "answers": [
       "align",
       "text-align",
-      "center"
+      "center",
+      "border"
     ],
     "correct": 1
   },
@@ -139,7 +154,8 @@
     "answers": [
       ".",
       "#",
-      "%"
+      "%",
+      "display"
     ],
     "correct": 0
   },
@@ -148,7 +164,8 @@
     "answers": [
       ".",
       "#",
-      "@"
+      "@",
+      "display"
     ],
     "correct": 1
   },
@@ -157,7 +174,8 @@
     "answers": [
       "font-family",
       "font-name",
-      "font-type"
+      "font-type",
+      "border"
     ],
     "correct": 0
   },
@@ -166,7 +184,8 @@
     "answers": [
       "px",
       "pt",
-      "hr"
+      "hr",
+      "em"
     ],
     "correct": 0
   },
@@ -175,7 +194,8 @@
     "answers": [
       "font-weight",
       "font-bold",
-      "bold"
+      "bold",
+      "border"
     ],
     "correct": 0
   },
@@ -184,7 +204,8 @@
     "answers": [
       "var",
       "let",
-      "const"
+      "const",
+      "variable = 5"
     ],
     "correct": 1
   },
@@ -193,7 +214,8 @@
     "answers": [
       "console.log()",
       "print()",
-      "echo()"
+      "echo()",
+      "text-transform"
     ],
     "correct": 0
   },
@@ -202,7 +224,8 @@
     "answers": [
       "//",
       "/* */",
-      "#"
+      "#",
+      "Inget av ovanstående"
     ],
     "correct": 0
   },
@@ -211,7 +234,8 @@
     "answers": [
       "number",
       "string",
-      "integer"
+      "integer",
+      "object"
     ],
     "correct": 0
   },
@@ -220,7 +244,8 @@
     "answers": [
       "function minFunktion() {}",
       "def minFunktion()",
-      "create function()"
+      "create function()",
+      "func myFunction() {}"
     ],
     "correct": 0
   },
@@ -229,7 +254,8 @@
     "answers": [
       "=",
       "==",
-      "==="
+      "===",
+      "!="
     ],
     "correct": 2
   },
@@ -238,7 +264,8 @@
     "answers": [
       "+",
       "-",
-      "*"
+      "*",
+      "!="
     ],
     "correct": 0
   },
@@ -247,7 +274,8 @@
     "answers": [
       "Visar ett meddelande",
       "Loggar i konsolen",
-      "Skapar en variabel"
+      "Skapar en variabel",
+      "Skickar ett mejl"
     ],
     "correct": 0
   },
@@ -256,7 +284,8 @@
     "answers": [
       "[]",
       "{}",
-      "()"
+      "()",
+      "Array.new()"
     ],
     "correct": 0
   },
@@ -265,1088 +294,1209 @@
     "answers": [
       "array.length",
       "len(array)",
-      "size(array)"
+      "size(array)",
+      "Array.new()"
     ],
     "correct": 0
   },
   {
-    "question": "Vilket HTML-element används för största rubriken?",
+    "question": "Vilken HTML-tagg påverkar sidans titel i sökresultat?",
     "answers": [
+      "<title>",
+      "<meta>",
+      "<header>",
+      "<h1>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken meta-tagg används för sidans beskrivning (SEO)?",
+    "answers": [
+      "<meta name=\"keywords\">",
+      "<meta name=\"description\">",
+      "<meta property=\"og:title\">",
+      "<meta charset>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Var placeras <title>-taggen?",
+    "answers": [
+      "I <body>",
+      "I <footer>",
+      "I <head>",
+      "Var som helst"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vad heter filen som instruerar sökrobotar vilka URL:er som får crawl:as?",
+    "answers": [
+      "sitemap.xml",
+      "robots.txt",
+      "feeds.xml",
+      "crawl.json"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken tagg används för att ange kanonisk URL?",
+    "answers": [
+      "<meta rel=\"canonical\">",
+      "<link rel=\"canonical\">",
+      "<a rel=\"canonical\">",
+      "<canonical>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket attribut förbättrar bilders SEO och tillgänglighet?",
+    "answers": [
+      "title",
+      "srcset",
+      "alt",
+      "sizes"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vad används sitemap.xml till?",
+    "answers": [
+      "Styra CSS-filer",
+      "Lista webbplatsens URL:er",
+      "Lagra cookies",
+      "Blockera botar"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken HTTP-status bör en permanent omdirigering ha för SEO?",
+    "answers": [
+      "200",
+      "301",
+      "302",
+      "404"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken påverkan har laddtid på SEO?",
+    "answers": [
+      "Ingen alls",
+      "Liten men mätbar",
+      "Endast på mobil",
+      "Endast i Safari"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Hur många H1-rubriker rekommenderas per sida (enkel tumregel)?",
+    "answers": [
+      "0",
+      "1",
+      "2–3",
+      "10+"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken meta-tagg kan förhindra indexering?",
+    "answers": [
+      "<meta name=\"robots\" content=\"noindex\">",
+      "<meta name=\"viewport\">",
+      "<meta charset>",
+      "<meta name=\"theme-color\">"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vad gör attributet rel=\"nofollow\" på en länk?",
+    "answers": [
+      "Förhindrar klick",
+      "Rekommenderar att inte föra vidare länkkraft",
+      "Döljer länken",
+      "Tar bort underline"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket är bäst för SEO för primär rubrik?",
+    "answers": [
+      "<h3>",
       "<h1>",
-      "<h6>",
-      "<p>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för att skapa en länk?",
-    "answers": [
-      "<a>",
-      "<link>",
-      "<href>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för en punktlista?",
-    "answers": [
-      "<ul>",
-      "<ol>",
-      "<li>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för en radbrytning?",
-    "answers": [
-      "<break>",
-      "<br>",
-      "<hr>"
+      "<b>",
+      "<span>"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken HTML-tagg används för att visa en bild?",
+    "question": "Vilket protokoll föredras för SEO av säkerhetsskäl?",
     "answers": [
-      "<img>",
-      "<src>",
-      "<picture>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut anger bildens källa?",
-    "answers": [
-      "href",
-      "src",
-      "alt"
+      "HTTP",
+      "HTTPS",
+      "FTP",
+      "WS"
     ],
     "correct": 1
   },
   {
-    "question": "Vad betyder HTML?",
+    "question": "Vilket format används ofta för strukturerad data?",
     "answers": [
-      "HyperText Markup Language",
-      "HighText Machine Language",
-      "Home Tool Markup Language"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för att skapa en tabell?",
-    "answers": [
-      "<table>",
-      "<tab>",
-      "<grid>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken HTML-attribut används för att ge ett element ett unikt namn?",
-    "answers": [
-      "id",
-      "class",
-      "name"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut används för att ange en webbadress till en länk?",
-    "answers": [
-      "src",
-      "href",
-      "link"
+      "XML-RPC",
+      "JSON-LD",
+      "CSV",
+      "INI"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap ändrar textens färg?",
+    "question": "Vilken metod sparar data i localStorage?",
     "answers": [
-      "color",
-      "background-color",
-      "text-color"
+      "localStorage.setItem()",
+      "localStorage.save()",
+      "localStorage.put()",
+      "localStorage.write()"
     ],
     "correct": 0
   },
   {
-    "question": "Vilken egenskap ändrar bakgrundsfärg?",
+    "question": "Vilken metod hämtar data från localStorage?",
     "answers": [
-      "color",
-      "background-color",
-      "bgcolor"
+      "localStorage.read()",
+      "localStorage.getItem()",
+      "localStorage.fetch()",
+      "localStorage.load()"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap används för textstorlek?",
+    "question": "Vilken metod tar bort en nyckel i localStorage?",
     "answers": [
-      "font-size",
-      "text-size",
-      "font"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skrivs en CSS-kommentar?",
-    "answers": [
-      "/* kommentar */",
-      "// kommentar",
-      "# kommentar"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att centrera text?",
-    "answers": [
-      "align",
-      "text-align",
-      "center"
+      "localStorage.clear()",
+      "localStorage.removeItem()",
+      "localStorage.delete()",
+      "localStorage.dropItem()"
     ],
     "correct": 1
   },
   {
-    "question": "Vilket tecken används för att markera en klass i CSS?",
+    "question": "Vilken metod tömmer all data i localStorage?",
     "answers": [
-      ".",
-      "#",
-      "%"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket tecken används för id i CSS?",
-    "answers": [
-      ".",
-      "#",
-      "@"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap ändrar teckensnitt?",
-    "answers": [
-      "font-family",
-      "font-name",
-      "font-type"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken enhet används ofta för marginaler?",
-    "answers": [
-      "px",
-      "pt",
-      "hr"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att göra text fet?",
-    "answers": [
-      "font-weight",
-      "font-bold",
-      "bold"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur deklarerar man en variabel?",
-    "answers": [
-      "var",
-      "let",
-      "const"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken metod visar text i konsolen?",
-    "answers": [
-      "console.log()",
-      "print()",
-      "echo()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken symbol används för att kommentera en rad?",
-    "answers": [
-      "//",
-      "/* */",
-      "#"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vad returnerar typeof 5?",
-    "answers": [
-      "number",
-      "string",
-      "integer"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en funktion?",
-    "answers": [
-      "function minFunktion() {}",
-      "def minFunktion()",
-      "create function()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken operator används för lika med?",
-    "answers": [
-      "=",
-      "==",
-      "==="
+      "localStorage.flush()",
+      "localStorage.reset()",
+      "localStorage.clear()",
+      "localStorage.destroy()"
     ],
     "correct": 2
   },
   {
-    "question": "Vilken operator används för addition?",
+    "question": "Vilken metod returnerar antal nycklar i localStorage indirekt?",
     "answers": [
-      "+",
-      "-",
-      "*"
+      "localStorage.size()",
+      "localStorage.count()",
+      "localStorage.keys()",
+      "localStorage.length"
     ],
-    "correct": 0
+    "correct": 3
   },
   {
-    "question": "Vad gör alert()?",
+    "question": "Hur lagras värden i localStorage?",
     "answers": [
-      "Visar ett meddelande",
-      "Loggar i konsolen",
-      "Skapar en variabel"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en array?",
-    "answers": [
-      "[]",
-      "{}",
-      "()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur får man längden av en array?",
-    "answers": [
-      "array.length",
-      "len(array)",
-      "size(array)"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket HTML-element används för största rubriken?",
-    "answers": [
-      "<h1>",
-      "<h6>",
-      "<p>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för att skapa en länk?",
-    "answers": [
-      "<a>",
-      "<link>",
-      "<href>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för en punktlista?",
-    "answers": [
-      "<ul>",
-      "<ol>",
-      "<li>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för en radbrytning?",
-    "answers": [
-      "<break>",
-      "<br>",
-      "<hr>"
+      "Som objekt",
+      "Som strängar",
+      "Som numbers",
+      "Som arrays"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken HTML-tagg används för att visa en bild?",
+    "question": "Vilken händelse triggas när storage ändras i en annan flik?",
     "answers": [
-      "<img>",
-      "<src>",
-      "<picture>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut anger bildens källa?",
-    "answers": [
-      "href",
-      "src",
-      "alt"
+      "change",
+      "storage",
+      "update",
+      "persist"
     ],
     "correct": 1
   },
   {
-    "question": "Vad betyder HTML?",
+    "question": "Vad händer med localStorage när fliken stängs?",
     "answers": [
-      "HyperText Markup Language",
-      "HighText Machine Language",
-      "Home Tool Markup Language"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för att skapa en tabell?",
-    "answers": [
-      "<table>",
-      "<tab>",
-      "<grid>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken HTML-attribut används för att ge ett element ett unikt namn?",
-    "answers": [
-      "id",
-      "class",
-      "name"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut används för att ange en webbadress till en länk?",
-    "answers": [
-      "src",
-      "href",
-      "link"
+      "Rensas alltid",
+      "Består kvar",
+      "Flyttas till sessionStorage",
+      "Blir cookie"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap ändrar textens färg?",
+    "question": "Vilken lagring delas mellan flikar på samma origin?",
     "answers": [
-      "color",
-      "background-color",
-      "text-color"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap ändrar bakgrundsfärg?",
-    "answers": [
-      "color",
-      "background-color",
-      "bgcolor"
+      "sessionStorage",
+      "localStorage",
+      "cookieStorage",
+      "tempStorage"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap används för textstorlek?",
+    "question": "Vad måste du göra för att lagra objekt i localStorage?",
     "answers": [
-      "font-size",
-      "text-size",
-      "font"
+      "Använd JSON.stringify()",
+      "Inget särskilt",
+      "Använd toObject()",
+      "Använd encodeURI()"
     ],
     "correct": 0
   },
   {
-    "question": "Hur skrivs en CSS-kommentar?",
+    "question": "Hur hämtar du och avkodar ett objekt från localStorage?",
     "answers": [
-      "/* kommentar */",
-      "// kommentar",
-      "# kommentar"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att centrera text?",
-    "answers": [
-      "align",
-      "text-align",
-      "center"
+      "parseInt(getItem())",
+      "JSON.parse(getItem())",
+      "toJSON(getItem())",
+      "eval(getItem())"
     ],
     "correct": 1
   },
   {
-    "question": "Vilket tecken används för att markera en klass i CSS?",
+    "question": "Vilken metod hämtar nyckeln vid ett index?",
     "answers": [
-      ".",
-      "#",
-      "%"
+      "localStorage.key()",
+      "localStorage.keys()",
+      "localStorage.index()",
+      "localStorage.getKey()"
     ],
     "correct": 0
   },
   {
-    "question": "Vilket tecken används för id i CSS?",
+    "question": "Vilken CSS-egenskap gör ett element flex-behållare?",
     "answers": [
-      ".",
-      "#",
-      "@"
+      "display: grid;",
+      "display: flex;",
+      "position: flex;",
+      "flex: 1;"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap ändrar teckensnitt?",
+    "question": "Vilken CSS-egenskap styr mellanrum runt ett element?",
     "answers": [
-      "font-family",
-      "font-name",
-      "font-type"
+      "margin",
+      "padding",
+      "gap",
+      "border"
     ],
     "correct": 0
   },
   {
-    "question": "Vilken enhet används ofta för marginaler?",
+    "question": "Vilken CSS-egenskap styr mellanrum inuti ett element?",
+    "answers": [
+      "margin",
+      "padding",
+      "gap",
+      "outline"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken selektor väljer element med klassen 'box'?",
+    "answers": [
+      ".box",
+      "#box",
+      "box[]",
+      "*box"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken enhet är relativ till rotremsans storlek?",
     "answers": [
       "px",
-      "pt",
-      "hr"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att göra text fet?",
-    "answers": [
-      "font-weight",
-      "font-bold",
-      "bold"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur deklarerar man en variabel?",
-    "answers": [
-      "var",
-      "let",
-      "const"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken metod visar text i konsolen?",
-    "answers": [
-      "console.log()",
-      "print()",
-      "echo()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken symbol används för att kommentera en rad?",
-    "answers": [
-      "//",
-      "/* */",
-      "#"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vad returnerar typeof 5?",
-    "answers": [
-      "number",
-      "string",
-      "integer"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en funktion?",
-    "answers": [
-      "function minFunktion() {}",
-      "def minFunktion()",
-      "create function()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken operator används för lika med?",
-    "answers": [
-      "=",
-      "==",
-      "==="
+      "em",
+      "rem",
+      "%"
     ],
     "correct": 2
   },
   {
-    "question": "Vilken operator används för addition?",
+    "question": "Vilken tagg används för semantisk sidfot?",
     "answers": [
-      "+",
-      "-",
-      "*"
+      "<footer>",
+      "<bottom>",
+      "<section>",
+      "<aside>"
     ],
     "correct": 0
   },
   {
-    "question": "Vad gör alert()?",
+    "question": "Vilken tagg representerar en navigationsmeny?",
     "answers": [
-      "Visar ett meddelande",
-      "Loggar i konsolen",
-      "Skapar en variabel"
+      "<nav>",
+      "<menu>",
+      "<navbar>",
+      "<route>"
     ],
     "correct": 0
   },
   {
-    "question": "Hur skapar man en array?",
+    "question": "Vilken attribut öppnar en länk i ny flik?",
     "answers": [
-      "[]",
-      "{}",
-      "()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur får man längden av en array?",
-    "answers": [
-      "array.length",
-      "len(array)",
-      "size(array)"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket HTML-element används för största rubriken?",
-    "answers": [
-      "<h1>",
-      "<h6>",
-      "<p>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för att skapa en länk?",
-    "answers": [
-      "<a>",
-      "<link>",
-      "<href>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för en punktlista?",
-    "answers": [
-      "<ul>",
-      "<ol>",
-      "<li>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för en radbrytning?",
-    "answers": [
-      "<break>",
-      "<br>",
-      "<hr>"
+      "rel",
+      "target=\"_blank\"",
+      "download",
+      "open"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken HTML-tagg används för att visa en bild?",
+    "question": "Vilken input-typ ger datumväljare?",
     "answers": [
-      "<img>",
-      "<src>",
-      "<picture>"
+      "type=\"date\"",
+      "type=\"time\"",
+      "type=\"datetime\"",
+      "type=\"calendar\""
     ],
     "correct": 0
   },
   {
-    "question": "Vilken attribut anger bildens källa?",
+    "question": "Vilken CSS-egenskap döljer ett element visuellt men reserverar plats?",
     "answers": [
-      "href",
-      "src",
-      "alt"
+      "visibility: hidden;",
+      "display: none;",
+      "opacity: 0;",
+      "overflow: hidden;"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken CSS-egenskap centrerar ett block horisontellt?",
+    "answers": [
+      "margin: auto;",
+      "text-align: center;",
+      "justify-content: center;",
+      "align-items: center;"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken CSS-funktion används för media queries?",
+    "answers": [
+      "@import",
+      "@media",
+      "@query",
+      "@screen"
     ],
     "correct": 1
   },
   {
-    "question": "Vad betyder HTML?",
+    "question": "Vilken enhet skalar med viewport-bredd?",
     "answers": [
-      "HyperText Markup Language",
-      "HighText Machine Language",
-      "Home Tool Markup Language"
+      "vw",
+      "vh",
+      "%",
+      "rem"
     ],
     "correct": 0
   },
   {
-    "question": "Vilken tagg används för att skapa en tabell?",
+    "question": "Vilken tagg bäddar in JavaScript?",
     "answers": [
-      "<table>",
-      "<tab>",
-      "<grid>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken HTML-attribut används för att ge ett element ett unikt namn?",
-    "answers": [
-      "id",
-      "class",
-      "name"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut används för att ange en webbadress till en länk?",
-    "answers": [
-      "src",
-      "href",
-      "link"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap ändrar textens färg?",
-    "answers": [
-      "color",
-      "background-color",
-      "text-color"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap ändrar bakgrundsfärg?",
-    "answers": [
-      "color",
-      "background-color",
-      "bgcolor"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap används för textstorlek?",
-    "answers": [
-      "font-size",
-      "text-size",
-      "font"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skrivs en CSS-kommentar?",
-    "answers": [
-      "/* kommentar */",
-      "// kommentar",
-      "# kommentar"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att centrera text?",
-    "answers": [
-      "align",
-      "text-align",
-      "center"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilket tecken används för att markera en klass i CSS?",
-    "answers": [
-      ".",
-      "#",
-      "%"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket tecken används för id i CSS?",
-    "answers": [
-      ".",
-      "#",
-      "@"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap ändrar teckensnitt?",
-    "answers": [
-      "font-family",
-      "font-name",
-      "font-type"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken enhet används ofta för marginaler?",
-    "answers": [
-      "px",
-      "pt",
-      "hr"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att göra text fet?",
-    "answers": [
-      "font-weight",
-      "font-bold",
-      "bold"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur deklarerar man en variabel?",
-    "answers": [
-      "var",
-      "let",
-      "const"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken metod visar text i konsolen?",
-    "answers": [
-      "console.log()",
-      "print()",
-      "echo()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken symbol används för att kommentera en rad?",
-    "answers": [
-      "//",
-      "/* */",
-      "#"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vad returnerar typeof 5?",
-    "answers": [
-      "number",
-      "string",
-      "integer"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en funktion?",
-    "answers": [
-      "function minFunktion() {}",
-      "def minFunktion()",
-      "create function()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken operator används för lika med?",
-    "answers": [
-      "=",
-      "==",
-      "==="
+      "<js>",
+      "<javascript>",
+      "<script>",
+      "<code>"
     ],
     "correct": 2
   },
   {
-    "question": "Vilken operator används för addition?",
+    "question": "Vilken metod lägger till en händelselyssnare?",
+    "answers": [
+      "on()",
+      "addEventListener()",
+      "listen()",
+      "attach()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad returnerar document.getElementById('id') om ingen träff finns?",
+    "answers": [
+      "null",
+      "undefined",
+      "false",
+      "0"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap ändrar innersta HTML-innehållet?",
+    "answers": [
+      "textContent",
+      "innerHTML",
+      "value",
+      "outerHTML"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod skapar ett nytt element i DOM?",
+    "answers": [
+      "document.createElement()",
+      "document.newElement()",
+      "dom.create()",
+      "element()"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken operatör sammanfogar strängar i JS?",
     "answers": [
       "+",
-      "-",
-      "*"
+      "&",
+      "||",
+      "."
     ],
     "correct": 0
   },
   {
-    "question": "Vad gör alert()?",
+    "question": "Vad gör === i JavaScript?",
     "answers": [
-      "Visar ett meddelande",
-      "Loggar i konsolen",
-      "Skapar en variabel"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en array?",
-    "answers": [
-      "[]",
-      "{}",
-      "()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur får man längden av en array?",
-    "answers": [
-      "array.length",
-      "len(array)",
-      "size(array)"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket HTML-element används för största rubriken?",
-    "answers": [
-      "<h1>",
-      "<h6>",
-      "<p>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för att skapa en länk?",
-    "answers": [
-      "<a>",
-      "<link>",
-      "<href>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket element används för en punktlista?",
-    "answers": [
-      "<ul>",
-      "<ol>",
-      "<li>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för en radbrytning?",
-    "answers": [
-      "<break>",
-      "<br>",
-      "<hr>"
+      "Jämför värde",
+      "Jämför värde och typ",
+      "Tilldelar värde",
+      "Kastar fel"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken HTML-tagg används för att visa en bild?",
+    "question": "Vilken array-metod lägger till sist i listan?",
     "answers": [
-      "<img>",
-      "<src>",
-      "<picture>"
+      "push()",
+      "pop()",
+      "shift()",
+      "unshift()"
     ],
     "correct": 0
   },
   {
-    "question": "Vilken attribut anger bildens källa?",
+    "question": "Vilken array-metod tar bort första elementet?",
     "answers": [
-      "href",
-      "src",
-      "alt"
+      "pop()",
+      "shift()",
+      "splice()",
+      "slice()"
     ],
     "correct": 1
   },
   {
-    "question": "Vad betyder HTML?",
+    "question": "Vilken metod stoppar standardbeteende för event?",
     "answers": [
-      "HyperText Markup Language",
-      "HighText Machine Language",
-      "Home Tool Markup Language"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken tagg används för att skapa en tabell?",
-    "answers": [
-      "<table>",
-      "<tab>",
-      "<grid>"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken HTML-attribut används för att ge ett element ett unikt namn?",
-    "answers": [
-      "id",
-      "class",
-      "name"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken attribut används för att ange en webbadress till en länk?",
-    "answers": [
-      "src",
-      "href",
-      "link"
+      "stopPropagation()",
+      "preventDefault()",
+      "cancel()",
+      "halt()"
     ],
     "correct": 1
   },
   {
-    "question": "Vilken egenskap ändrar textens färg?",
-    "answers": [
-      "color",
-      "background-color",
-      "text-color"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap ändrar bakgrundsfärg?",
-    "answers": [
-      "color",
-      "background-color",
-      "bgcolor"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap används för textstorlek?",
-    "answers": [
-      "font-size",
-      "text-size",
-      "font"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skrivs en CSS-kommentar?",
-    "answers": [
-      "/* kommentar */",
-      "// kommentar",
-      "# kommentar"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att centrera text?",
-    "answers": [
-      "align",
-      "text-align",
-      "center"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilket tecken används för att markera en klass i CSS?",
-    "answers": [
-      ".",
-      "#",
-      "%"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilket tecken används för id i CSS?",
-    "answers": [
-      ".",
-      "#",
-      "@"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken egenskap ändrar teckensnitt?",
-    "answers": [
-      "font-family",
-      "font-name",
-      "font-type"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken enhet används ofta för marginaler?",
-    "answers": [
-      "px",
-      "pt",
-      "hr"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken egenskap används för att göra text fet?",
+    "question": "Vilken CSS-egenskap gör text kursiv?",
     "answers": [
       "font-weight",
-      "font-bold",
-      "bold"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur deklarerar man en variabel?",
-    "answers": [
-      "var",
-      "let",
-      "const"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "Vilken metod visar text i konsolen?",
-    "answers": [
-      "console.log()",
-      "print()",
-      "echo()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken symbol används för att kommentera en rad?",
-    "answers": [
-      "//",
-      "/* */",
-      "#"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vad returnerar typeof 5?",
-    "answers": [
-      "number",
-      "string",
-      "integer"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Hur skapar man en funktion?",
-    "answers": [
-      "function minFunktion() {}",
-      "def minFunktion()",
-      "create function()"
-    ],
-    "correct": 0
-  },
-  {
-    "question": "Vilken operator används för lika med?",
-    "answers": [
-      "=",
-      "==",
-      "==="
+      "text-style",
+      "font-style",
+      "text-transform"
     ],
     "correct": 2
   },
   {
-    "question": "Vilken operator används för addition?",
+    "question": "Vilket HTML-attribut anger språk på dokumentet?",
     "answers": [
-      "+",
-      "-",
-      "*"
+      "lang",
+      "xml:lang",
+      "locale",
+      "dir"
     ],
     "correct": 0
   },
   {
-    "question": "Vad gör alert()?",
+    "question": "Vilken doctype används för HTML5?",
     "answers": [
-      "Visar ett meddelande",
-      "Loggar i konsolen",
-      "Skapar en variabel"
+      "<!DOCTYPE html>",
+      "<!DOCTYPE html5>",
+      "<!DOCTYPE HTML PUBLIC>",
+      "<!HTML>"
     ],
     "correct": 0
   },
   {
-    "question": "Hur skapar man en array?",
+    "question": "Vad gör <link rel=\"preconnect\">?",
     "answers": [
-      "[]",
-      "{}",
-      "()"
+      "Laddar CSS",
+      "Förbättrar uppkoppling till extern origin",
+      "Förhindrar blockering",
+      "Lagrar cache"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken egenskap styr typsnittsstorlek i root i CSS?",
+    "answers": [
+      ":root-size",
+      "html { font-size }",
+      "body { size }",
+      "* { font-size }"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad betyder CSS-förkortningen?",
+    "answers": [
+      "Cascading Style Sheets",
+      "Computer Style System",
+      "Creative Style System",
+      "Cascaded Sheet Styles"
     ],
     "correct": 0
   },
   {
-    "question": "Hur får man längden av en array?",
+    "question": "Vilken CSS-egenskap skapar skugga runt element?",
     "answers": [
-      "array.length",
-      "len(array)",
-      "size(array)"
+      "box-shadow",
+      "text-shadow",
+      "filter-shadow",
+      "shadow"
     ],
     "correct": 0
+  },
+  {
+    "question": "Vilken egenskap styr radavstånd?",
+    "answers": [
+      "line-height",
+      "letter-spacing",
+      "word-spacing",
+      "row-gap"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken CSS-egenskap gör ett element relativt placerat?",
+    "answers": [
+      "position: static;",
+      "position: relative;",
+      "position: fixed;",
+      "position: sticky;"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken egenskap används för att runda hörn?",
+    "answers": [
+      "border-style",
+      "border-radius",
+      "outline-radius",
+      "corner-radius"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad gör 'defer' på <script>?",
+    "answers": [
+      "Stoppar laddning",
+      "Kör skript före HTML",
+      "Skjuter upp körning tills DOM är parsa",
+      "Kör efter load-event"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vad gör 'async' på <script>?",
+    "answers": [
+      "Garanterad körordning",
+      "Blockerar rendering",
+      "Laddar parallellt och kör när klar",
+      "Ignoreras i HTML5"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilket meta-attribut krävs för responsiv design på mobil?",
+    "answers": [
+      "viewport",
+      "charset",
+      "robots",
+      "theme-color"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken CSS-egenskap byter layout till två kolumner i grid?",
+    "answers": [
+      "grid-template-areas",
+      "grid-template-columns",
+      "grid-auto-flow",
+      "grid-column"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken enhet motsvarar 1% av viewport-höjd?",
+    "answers": [
+      "vh",
+      "vw",
+      "rem",
+      "ch"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken metod visar en dialog med OK/Avbryt?",
+    "answers": [
+      "alert()",
+      "prompt()",
+      "confirm()",
+      "dialog()"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken strängmetod tar bort whitespace runtom?",
+    "answers": [
+      "trim()",
+      "slice()",
+      "splice()",
+      "strip()"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken metod gör en HTTP-förfrågan i modern JS?",
+    "answers": [
+      "XMLHttpRequest",
+      "fetch()",
+      "$.ajax()",
+      "http.get()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket HTTP-verb används för att hämta data?",
+    "answers": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilket HTTP-verb används för att skapa resurs?",
+    "answers": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad returnerar Array.isArray([])?",
+    "answers": [
+      "true",
+      "false",
+      "null",
+      "undefined"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken metod kopierar delar av en array utan att ändra originalet?",
+    "answers": [
+      "splice()",
+      "slice()",
+      "copy()",
+      "map()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod itererar och returnerar en ny array?",
+    "answers": [
+      "forEach()",
+      "map()",
+      "reduce()",
+      "filter()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod filtrerar element enligt villkor?",
+    "answers": [
+      "map()",
+      "filter()",
+      "reduce()",
+      "find()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod hittar första matchande elementet?",
+    "answers": [
+      "filter()",
+      "find()",
+      "some()",
+      "every()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod testar om minst ett element matchar?",
+    "answers": [
+      "every()",
+      "some()",
+      "includes()",
+      "find()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod kontrollerar om array innehåller ett värde?",
+    "answers": [
+      "has()",
+      "contains()",
+      "includes()",
+      "in()"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken operator sprider ut element i en arrayliteral?",
+    "answers": [
+      "...",
+      "??",
+      "=>",
+      "::"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vad gör 'use strict'?",
+    "answers": [
+      "Aktiverar striktare JS-regler",
+      "Gör koden snabbare alltid",
+      "Deaktiverar var",
+      "Låser globalen"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken metod konverterar en sträng till heltal?",
+    "answers": [
+      "Number()",
+      "parseInt()",
+      "toInt()",
+      "int()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod fördröjer en funktion N ms?",
+    "answers": [
+      "setInterval()",
+      "setTimeout()",
+      "wait()",
+      "sleep()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken metod kör en funktion upprepat med intervall?",
+    "answers": [
+      "setTimeout()",
+      "setInterval()",
+      "loop()",
+      "repeat()"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken selektor väljer alla <p> inuti .box?",
+    "answers": [
+      ".box + p",
+      ".box > p",
+      ".box p",
+      "p .box"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken CSS-egenskap styr mellanrum mellan flex-items?",
+    "answers": [
+      "gap",
+      "space",
+      "flex-gap",
+      "margin-collapse"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap gör text versaler?",
+    "answers": [
+      "text-transform: uppercase;",
+      "font-variant: caps;",
+      "letter-case: upper;",
+      "text-case: capital;"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap döljer överskjutande innehåll med rullista?",
+    "answers": [
+      "visibility",
+      "overflow: hidden;",
+      "overflow: scroll;",
+      "display"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken CSS-funktion används för att importera ett typsnitt från Google Fonts?",
+    "answers": [
+      "@font-face",
+      "@import url()",
+      "@typeface",
+      "@font"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket attribut binder en label till ett input?",
+    "answers": [
+      "for",
+      "id",
+      "name",
+      "value"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken input-typ maskerar tecken (lösenord)?",
+    "answers": [
+      "text",
+      "password",
+      "email",
+      "hidden"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket attribut kräver att ett formulärfält fylls i?",
+    "answers": [
+      "need",
+      "must",
+      "required",
+      "validate"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilket attribut förhindrar formulär från att autokompletteras?",
+    "answers": [
+      "autocomplete=\"off\"",
+      "novalidate",
+      "autofill=\"false\"",
+      "noauto"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vad gör event.stopPropagation()?",
+    "answers": [
+      "Stoppar standardbeteende",
+      "Stoppar bubblning",
+      "Stoppar capture",
+      "Avbryter nätverk"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken CSS-egenskap bestämmer elementets z-ordning?",
+    "answers": [
+      "order",
+      "z-index",
+      "stack",
+      "layer"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket HTML-element används för huvudområde med logotyp och nav?",
+    "answers": [
+      "<header>",
+      "<main>",
+      "<section>",
+      "<aside>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilket HTML-element innehåller huvudinnehåll?",
+    "answers": [
+      "<main>",
+      "<header>",
+      "<footer>",
+      "<article>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken semantisk tagg är bäst för självständigt innehåll?",
+    "answers": [
+      "<div>",
+      "<article>",
+      "<span>",
+      "<section>"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken semantisk tagg är lämplig för sidans sidoinnehåll?",
+    "answers": [
+      "<aside>",
+      "<section>",
+      "<main>",
+      "<footer>"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken CSS-egenskap ändrar elementets transparens?",
+    "answers": [
+      "visibility",
+      "filter",
+      "opacity",
+      "alpha"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilket attribut gör en bild responsiv i HTML5 via CSS?",
+    "answers": [
+      "width=\"100%\"",
+      "style=\"max-width:100%\"",
+      "loading=\"lazy\"",
+      "draggable=\"false\""
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad gör attribute loading=\"lazy\" på <img>?",
+    "answers": [
+      "Förladdar alltid",
+      "Laddar när nära viewport",
+      "Blockerar rendering",
+      "Tar bort src"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket attribut ger textalternativ för skärmläsare?",
+    "answers": [
+      "alt",
+      "title",
+      "aria-text",
+      "desc"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap byter muspekare till hand på hover?",
+    "answers": [
+      "cursor: pointer;",
+      "hover: pointer;",
+      "mouse: hand;",
+      "pointer: on;"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken enhet är procent av förälderns bredd?",
+    "answers": [
+      "em",
+      "rem",
+      "ch",
+      "%"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Vilken CSS-egenskap skalar ett element 2x?",
+    "answers": [
+      "transform: scale(2);",
+      "scale: 2;",
+      "zoom: 2;",
+      "matrix: 2;"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap roterar ett element 45 grader?",
+    "answers": [
+      "rotate: 45deg;",
+      "transform: rotate(45deg);",
+      "transform: turn(45deg);",
+      "angle: 45deg;"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken egenskap skapar övergångar?",
+    "answers": [
+      "transition",
+      "animation",
+      "filter",
+      "timing"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken egenskap startar en enkel nyckelbildsanimation?",
+    "answers": [
+      "transition",
+      "@keyframes",
+      "transform",
+      "animate"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken CSS-egenskap används för att göra text understruken?",
+    "answers": [
+      "text-decoration",
+      "text-underline",
+      "decoration",
+      "underline"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilket attribut på <form> anger vart datan skickas?",
+    "answers": [
+      "action",
+      "method",
+      "target",
+      "enctype"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilket attribut på <form> anger HTTP-metod?",
+    "answers": [
+      "action",
+      "method",
+      "target",
+      "rel"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vad gör e.preventDefault() i ett submit-event?",
+    "answers": [
+      "Återställer formuläret",
+      "Stoppar sidladdning/submit",
+      "Stänger fönstret",
+      "Startar AJAX"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilket attribut på <img> förbättrar LCP genom att prioritera laddning?",
+    "answers": [
+      "decoding",
+      "fetchpriority=\"high\"",
+      "importance",
+      "loading"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken HTTP-kod betyder sidan inte hittas?",
+    "answers": [
+      "301",
+      "403",
+      "404",
+      "500"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken HTTP-kod betyder serverfel?",
+    "answers": [
+      "200",
+      "204",
+      "301",
+      "500"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Vilket attribut anger en knapps typ i formulär?",
+    "answers": [
+      "type",
+      "role",
+      "rel",
+      "method"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken input-typ validerar e-postformat?",
+    "answers": [
+      "text",
+      "email",
+      "url",
+      "tel"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken CSS-egenskap skapar cirkulär bild från kvadratisk?",
+    "answers": [
+      "border: 50%;",
+      "border-radius: 50%;",
+      "corner-round: 50%;",
+      "shape: circle;"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Vilken CSS-egenskap styr avstånd mellan bokstäver?",
+    "answers": [
+      "line-height",
+      "word-spacing",
+      "letter-spacing",
+      "gap"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Vilken metod klistrar ihop array-element till en sträng?",
+    "answers": [
+      "join()",
+      "concat()",
+      "combine()",
+      "attach()"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Vilken metod gör en djup klon av ett JSON-objekt (enkelt sätt)?",
+    "answers": [
+      "JSON.copy()",
+      "JSON.parse(JSON.stringify(obj))",
+      "Object.clone()",
+      "structuredClone.toJSON()"
+    ],
+    "correct": 1
   }
 ]

@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZZ - BY TEAM 4</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div id="previous-result"></div>
     <div id="question-container">
-        <div id="question"></div>
-        <div id="answer-one"></div>
-        <div id="answer-two"></div>
-        <div id="answer-three"></div>
-        <div id="answer-four"></div>
+      <div id="countdown-display">10:00</div>
+
+      <div id="question"></div>
+      <button id="start-button">Starta</button>
+      <div id="answer-one"></div>
+      <div id="answer-two"></div>
+      <div id="answer-three"></div>
+      <div id="answer-four"></div>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <div id="result-container" class="hidden">
+      <h2>Resultat</h2>
+      <div id="score"></div>
+    </div>
+  </body>
 </html>
-
-
-
