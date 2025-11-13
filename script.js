@@ -72,8 +72,16 @@ function startshow() {
   leaderboardButton.classList.add("hidden"); //Gömmer leaderboard knappen när quizet startas.
 }
 
+function resultatRestartGame() {
+  const resultContainer = document.getElementById("result-container");
+  resultContainer.classList.add("hidden");
+  startCountdown();
+  init();
+}
+
 startButton.addEventListener("click", startCountdown);
 startButton.addEventListener("click", startshow);
+startButton.addEventListener("click", resultatRestartGame);
 
 async function getQuizQuestions() {
   try {
@@ -166,8 +174,6 @@ async function endQuiz(timeOut = false) {
   startButton.style.display = "flex";
   startButton.textContent = "Börja om";
   leaderboardButton.classList.remove("hidden"); //Visar leaderboard knappen när quizet är slut
-
-  
 
   console.log(countdownTime);
   const timeUsed = `${Math.floor((TOTAL_TIME_SECONDS - countdownTime) / 60)} min ${(TOTAL_TIME_SECONDS - countdownTime) % 60} sek`;
