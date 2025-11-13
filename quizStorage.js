@@ -8,7 +8,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // === Spara resultat lokalt + i Firebase ===
-export async function saveResultToLocal(correctCount, questions, timeUsed, timeRemaining) {
+export async function saveResultToLocal(correctCount, questions, timeUsed, timeRemaining, userName) {
   const previousResults = JSON.parse(localStorage.getItem("quizResults")) || [];
 
   const newResult = {
@@ -17,7 +17,7 @@ export async function saveResultToLocal(correctCount, questions, timeUsed, timeR
     total: questions.length,
     timeUsed,
     timeRemaining,
-    userName:"team 4"
+    userName: userName || "Anonym",
   };
 
   previousResults.push(newResult);
@@ -50,12 +50,13 @@ export async function loadResults() {
     if (b.score !== a.score) return b.score - a.score;
     return parseInt(b.timeRemaining) - parseInt(a.timeRemaining);
   });
-
+  console.log("Loaded results:", sorted);
   localStorage.setItem("quizResults", JSON.stringify(sorted));
   return sorted;
 }
 
 // === Visa resultat i DOM ===
+// === !!!! Ersatt av leaderboard !!!! ===
 export async function showResults(containerId = "resultsContainer") {
   const results = await loadResults();
   const container = document.getElementById(containerId);

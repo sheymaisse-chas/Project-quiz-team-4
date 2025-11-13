@@ -1,9 +1,10 @@
-import { saveResultToLocal, showResults } from "./quizStorage.js";
+import { saveResultToLocal, loadResults } from "./quizStorage.js";
 
 console.log("Script loaded successfully.");
 
 let questions = [];
 let userAnswers = [];
+let userName = "";
 
 const showstart = document.getElementById("start-button");
 showstart.classList.add("show-start");
@@ -13,6 +14,7 @@ showstart.classList.add("show-start");
 
 const countdownDisplay = document.getElementById("countdown-display");
 const startButton = document.getElementById("start-button");
+const leaderboardButton = document.getElementById("leaderboard-button");
 const timeoutElement = document.querySelector(".timeout");
 
 const TOTAL_TIME_SECONDS = 600; // totala tid
@@ -61,6 +63,13 @@ function startCountdown() {
 function startshow() {
   const startshow = document.getElementById("question-container");
   startshow.classList.remove("hidden");
+
+  // Göm leaderboard om den är synlig
+  const leaderboard = document.getElementById("leaderboard-container");
+  if (!leaderboard.classList.contains("hidden")) {
+    leaderboard.classList.add("hidden");
+  }
+  leaderboardButton.classList.add("hidden"); //Gömmer leaderboard knappen när quizet startas.
 }
 
 startButton.addEventListener("click", startCountdown);
@@ -156,6 +165,7 @@ async function endQuiz(timeOut = false) {
   resultContainer.classList.remove("hidden");
   startButton.style.display = "flex";
   startButton.textContent = "Börja om";
+  leaderboardButton.classList.remove("hidden"); //Visar leaderboard knappen när quizet är slut
 
   
 
@@ -172,7 +182,7 @@ async function endQuiz(timeOut = false) {
   `;
   
   // spara via modul i localStorage + Firebase
-  await saveResultToLocal(correctCount, questions, timeUsed, timeRemaining);
+  await saveResultToLocal(correctCount, questions, timeUsed, timeRemaining, userName);
 }
 
 async function init() {
@@ -183,5 +193,68 @@ async function init() {
     console.error("Inga frågor kunde hämtas.");
   }
 }
+
+// Hämta topp 10 från localStorage och visa
+async function showLeaderboard() {
+  const container = document.getElementById("leaderboard-container");
+  const list = document.getElementById("leaderboard-list");
+  list.innerHTML = "";
+
+  // 🔹 Hämta resultat via modulen (hämtar från localStorage och ev. Firebase)
+  const results = await loadResults();
+
+  if (!results || results.length === 0) {
+    list.innerHTML = `<li>Inga resultat hittades ännu.</li>`;
+    container.classList.remove("hidden");
+    return;
+  }
+
+  // 🔹 Sortera efter score (desc), sen timeRemaining (desc)
+  results.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.timeRemaining - a.timeRemaining;
+  });
+
+  const topTen = results.slice(0, 10);
+
+  // 🔹 Skapa HTML-rader för top 10
+  topTen.forEach((r, i) => {
+    const li = document.createElement("li");
+
+    // 🔹 Tilldela klass för topp 3
+    if (i === 0) li.classList.add("firstRanked");
+    else if (i === 1) li.classList.add("secondRanked");
+    else if (i === 2) li.classList.add("thirdRanked");
+    else li.classList.add("ranked"); // vanlig klass för resten
+
+    // 🔹 Sätt HTML – topp 3 har medalj, resten får platsnummer
+    let rankDisplay;
+    if (i === 0) rankDisplay = "🥇";
+    else if (i === 1) rankDisplay = "🥈";
+    else if (i === 2) rankDisplay = "🥉";
+    else rankDisplay = `#${i + 1}`;
+
+    li.innerHTML = `
+      <span class="rank">${rankDisplay}</span>
+      <span class="user">${r.username || "Anonym"}</span>
+      <span class="score">${r.score}/${r.total} – ${r.timeUsed}</span>
+    `;
+
+    list.appendChild(li);
+  });
+
+  container.classList.remove("hidden");
+  document.getElementById("question-container").classList.add("hidden");
+  document.getElementById("result-container").classList.add("hidden");
+}
+
+
+// Göm leaderboard
+document.getElementById("close-leaderboard").addEventListener("click", () => {
+  document.getElementById("leaderboard-container").classList.add("hidden");
+});
+
+// Knapp för att visa leaderboard
+document.getElementById("leaderboard-button").addEventListener("click", showLeaderboard);
 
 init();
