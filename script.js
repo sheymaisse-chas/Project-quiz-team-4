@@ -55,6 +55,7 @@ function startCountdown() {
   clearInterval(countdownInterval);
   countdownTime = TOTAL_TIME_SECONDS; //Återställer timern.
   startButton.style.display = "none"; //Gömmer start knappen
+  // startButton.classList.add("hidden"); //Gömmer start knappen
   countdownDisplay.textContent = formatTime(countdownTime); //Kallar på formatTime funktionen och visar nedräkningen per sekund i div texten.
   countdownInterval = setInterval(updateCountdown, 1000); //1000 behövs för att det faktist ska gå en sekund mellan varje ändring.
   timeoutElement.style.display = "none"; //Tar bort text stringen när timern börjar om.
@@ -171,11 +172,10 @@ async function endQuiz(timeOut = false) {
   const questionContainer = document.getElementById("question-container");
   questionContainer.classList.add("hidden");
   resultContainer.classList.remove("hidden");
-  startButton.style.display = "flex";
-  startButton.textContent = "Börja om";
   leaderboardButton.classList.remove("hidden"); //Visar leaderboard knappen när quizet är slut
+  const restartBtn = document.getElementById("restart-button");
+  restartBtn.classList.remove("hidden");
 
-  console.log(countdownTime);
   const timeUsed = `${Math.floor((TOTAL_TIME_SECONDS - countdownTime) / 60)} min ${(TOTAL_TIME_SECONDS - countdownTime) % 60} sek`;
   const timeRemaining = countdownTime; // numeriskt för enklare sortering
 
@@ -199,6 +199,30 @@ async function init() {
     console.error("Inga frågor kunde hämtas.");
   }
 }
+
+function restartQuiz() {
+  // Göm resultat
+  document.getElementById("result-container").classList.add("hidden");
+
+  // Töm resultattext
+  document.getElementById("score").innerHTML = "";
+
+  // Göm restart-knappen
+  const restartBtn = document.getElementById("restart-button");
+  restartBtn.classList.add("hidden");
+
+  // Visa leaderboard-knappen igen om du vill
+  leaderboardButton.classList.remove("hidden");
+  // startButton.classList.remove("hidden");
+  startButton.style.display = "flex";
+
+  // Starta om timer + quiz
+
+  init();
+}
+
+document.getElementById("restart-button").addEventListener("click", restartQuiz);
+
 
 // Hämta topp 10 från localStorage och visa
 async function showLeaderboard() {
