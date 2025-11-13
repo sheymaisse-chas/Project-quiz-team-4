@@ -5,7 +5,7 @@ let userAnswers = [];
 
 const showstart = document.getElementById("start-button");
 showstart.classList.add("show-start");
-
+//test
 // statisk timer–variabel (för framtida användning)
 // let timeLeft = 600; // 2 minuter t.ex.
 
