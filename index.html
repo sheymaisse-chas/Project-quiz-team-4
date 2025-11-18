@@ -8,6 +8,7 @@
     <script type="module" src="./script.js" defer></script>
   </head>
   <body>
+<<<<<<< HEAD
     <input type="text" placeholder="name">
     <div id="previous-result"></div>
     <div id="question-container">
@@ -21,6 +22,30 @@
       <div id="answer-four"></div>
     </div>
 
+=======
+    <div class="timeout">Tiden är ute! Vill du börja om?</div>
+    <div class="button-group">
+      <button class="show-start" id="start-button">Starta</button>
+      <button class="leaderboard-btn" id="leaderboard-button">Leaderboard</button>
+      <button id="restart-button" class="show-start hidden">Spela igen</button>
+    </div>
+    <div id="question-container" class="hidden">
+        <div id="countdown-display">10:00</div>
+
+        <div id="question"></div>
+        <div id="answer-one"></div>
+        <div id="answer-two"></div>
+        <div id="answer-three"></div>
+        <div id="answer-four"></div>
+    </div>
+    <!-- Ett dolt leaderboard-element -->
+    <div id="leaderboard-container" class="hidden">
+      <h2>Leaderboard 🏆</h2>
+      <ul id="leaderboard-list"></ul>
+      <button id="close-leaderboard">Stäng</button>
+    </div>
+    
+>>>>>>> origin
     <div id="result-container" class="hidden">
       <h2>Resultat</h2>
       <div id="score"></div>

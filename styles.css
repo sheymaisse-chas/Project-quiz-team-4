@@ -81,28 +81,6 @@ body {
   font-size: 20px;
 }
 
-#start-button {
-  margin-bottom: 50px;
-}
-
-#start-button {
-  font-size: 16px;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  background-color: var(--hover-bg);
-  color: var(--text-white);
-  cursor: pointer;
-  transition: all 0.1s ease;
-  font-weight: 700;
-}
-
-#start-button:hover {
-  transform: scale(1.1);
-  background-color: var(--hover-bg);
-  color: var(--orange);
-}
-
 @media (max-width: 700px) {
   #question-container {
     display: flex;
@@ -154,3 +132,149 @@ body {
   flex-direction: column;
   align-items: center;
 }
+<<<<<<< HEAD
+=======
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;             /* avstånd mellan knapparna */
+  margin-bottom: 40px;
+  flex-wrap: wrap;       /* gör att de hoppar ner på mobil */
+}
+
+/* Gör knapparna lika stora och snyggt matchade */
+.show-start,
+.leaderboard-btn {
+  font-size: 15px;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  background-color: var(--hover-bg);
+  color: var(--text-white);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  font-weight: 700;
+}
+
+.show-start:hover,
+.leaderboard-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--hover-bg);
+  color: var(--orange);
+}
+
+/* ==== Leaderboard-styling ==== */
+#leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  padding: 2rem;
+  background-color: var(--darkgray);
+  color: var(--text-white);
+  width: 100%;
+  max-width: 480px; /* Lite bredare */
+}
+
+#leaderboard-container h2 {
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+
+#leaderboard-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#leaderboard-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: var(--text-white);
+}
+
+#leaderboard-list li:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+#leaderboard-list li:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#leaderboard-list .rank {
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#leaderboard-list .firstRanked {
+  background: linear-gradient(90deg, gold, rgba(255,215,0,0.1));
+}
+
+#leaderboard-list .secondRanked {
+  background: linear-gradient(90deg, silver, rgba(192,192,192,0.1));
+}
+
+#leaderboard-list .thirdRanked {
+  background: linear-gradient(90deg, #cd7f32, rgba(205,127,50,0.1)); /* brons */
+}
+
+#leaderboard-list .user {
+  flex: 1;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#leaderboard-list .score {
+  text-align: right;
+  font-weight: 600;
+}
+
+
+/* Responsivitet */
+@media (max-width: 600px) {
+  #leaderboard-container {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  #leaderboard-list li {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #start-button,
+  #leaderboard-button {
+    width: 90%;
+  }
+}
+
+#close-leaderboard {
+  margin-top: 1rem;
+  background-color: var(--hover-bg);
+  color: var(--text-white);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+#close-leaderboard:hover {
+  transform: scale(1.1);
+  color: var(--orange);
+}
+>>>>>>> origin
