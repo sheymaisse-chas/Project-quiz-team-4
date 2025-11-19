@@ -6,6 +6,13 @@ let questions = [];
 let userAnswers = [];
 let userName = "";
 let correctCount = 0;
+let inputElement = document.querySelector('.user-name');
+
+function getUserName() {
+
+  userName = inputElement.value;
+  console.log('The user name is:', userName);
+}
 const showstart = document.getElementById("start-button");
 showstart.classList.add("show-start");
 
@@ -21,7 +28,7 @@ const TOTAL_TIME_SECONDS = 600; // totala tid
 
 let countdownTime = TOTAL_TIME_SECONDS; //nuvarande tid
 let countdownInterval; //kontroll nyckel, stoppar timern och gör så att man kan börja om
-const QUESTION_LIMIT = 2;
+const QUESTION_LIMIT = 10;
 
 //Timer**
 function formatTime(totalSeconds) {
@@ -59,9 +66,20 @@ function startCountdown() {
   countdownDisplay.textContent = formatTime(countdownTime); //Kallar på formatTime funktionen och visar nedräkningen per sekund i div texten.
   countdownInterval = setInterval(updateCountdown, 1000); //1000 behövs för att det faktist ska gå en sekund mellan varje ändring.
   timeoutElement.style.display = "none"; //Tar bort text stringen när timern börjar om.
+  inputElement.style.display = "none";
 }
 
-
+inputElement.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        // Stop the Enter key from triggering any default browser action (like form submission)
+        event.preventDefault(); 
+        
+        // Bonus: Automatically trigger the start button's actions as well
+        // Since your start button already triggers startCountdown, startshow, and resultatRestartGame
+        // it's good practice to programmatically click it to maintain a single source of truth.
+        document.getElementById('start-button').click();
+    }
+});
 
 function resultatRestartGame() {
   const resultContainer = document.getElementById("result-container");
@@ -178,10 +196,7 @@ async function renderHTML() {
   endQuiz();
 }
 
-
-
 // Avsluta quiz och räkna resultat
-// ============================
 async function endQuiz(timeOut = false) {
   // --- Timer bortkommenterad tills vidare ---
   clearInterval(countdownInterval);
@@ -210,8 +225,10 @@ async function endQuiz(timeOut = false) {
 }
 
 function startshow() {
+  
   const startshow = document.getElementById("question-container");
   startshow.classList.remove("hidden");
+  getUserName();
 
   // Göm leaderboard om den är synlig
   const leaderboard = document.getElementById("leaderboard-container");
