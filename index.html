@@ -3,15 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <title>QUIZZ - BY TEAM 4</title>
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./script.js" defer></script>
   </head>
   <body>
     <div class="timeout">Tiden är ute! Vill du börja om?</div>
+    <h1>
+      &lt;quizScript&gt;</h1>
+      <input class="user-name" id="username" type="text" placeholder="const namn">
     <div class="button-group">
-      <button class="show-start" id="start-button">Starta</button>
-      <button class="leaderboard-btn" id="leaderboard-button">Leaderboard</button>
+      <button class="show-start" id="start-button">starta</button>
+      <button class="leaderboard-btn" id="leaderboard-button">leaderBoard</button>
       <button id="restart-button" class="show-start hidden">Spela igen</button>
     </div>
     <div id="question-container" class="hidden">
@@ -34,5 +40,14 @@
       <h2>Resultat</h2>
       <div id="score"></div>
     </div>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1YS6S9KN6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S1YS6S9KN6');
+    </script>
   </body>
 </html>
