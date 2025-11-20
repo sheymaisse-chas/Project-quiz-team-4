@@ -385,7 +385,7 @@ setInterval(draw, 35);
 
         let paused = false;
 
-document.getElementById("pauseBtn").addEventListener("click", function () {
+document.getElementById("themeBtn").addEventListener("click", function () {
     paused = !paused;
     this.textContent = paused ? "<theme>" : "<no-theme>";
 });

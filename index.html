@@ -14,7 +14,7 @@
   </head>
   <body>
     <canvas id="c"></canvas>
-   <button class="pause-btn" id="pauseBtn">&lt;no-theme&gt;</button>
+   <button class="theme-btn" id="themeBtn">&lt;no-theme&gt;</button>
     <div class="content">
       <div class="userDiv"></div>
       <div class="timeout">Tiden är ute! Vill du börja om?</div>
@@ -45,7 +45,11 @@
         <div id="score"></div>
       </div>
 
-      <button id="pauseBtn" class="pause-button hidden">⏸ Pausa</button>
+      <button id="pauseBtn" class="pause-button hidden">
+          <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em">
+          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+          </svg> Pausa
+      </button>
       <p id="pause-warning" class="hidden warning-text">Svara på frågan först innan du kan pausa.</p>
 
       <div id="pause-overlay" class="pause-overlay hidden">  
