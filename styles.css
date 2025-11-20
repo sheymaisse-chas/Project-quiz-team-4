@@ -103,20 +103,20 @@ h1 {
 #answer-two,
 #answer-three,
 #answer-four {
-  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(195, 195, 195);
   border-radius: 8px;
   padding: 20px;
-  text-align: center;
   color: var(--text-white);
   height: 20px;
   cursor: pointer;
   transition: all 0.1s ease;
+  font-size: 1.25rem;
 }
 
 .answers:hover {
-  background-color: var(--hover-bg);
-  transform: scale(1.1);
-  color: var(--orange);
+  transform: scale(1.025);
 }
 
 #countdown-display,
@@ -195,9 +195,11 @@ h1 {
 
 /* Gör knapparna lika stora och snyggt matchade */
 .show-start,
-.leaderboard-btn {
+.leaderboard-btn, .answers {
+  display: flex;
+  justify-content: center;
   position: relative;
-  padding: 12px 30px;
+  padding: 12px 20px;
   font-size: 20px;
   font-family: "Source Code Pro", monospace;
   color: white;
@@ -209,22 +211,22 @@ h1 {
   transition: color 0.3s, border-color 0.3s;
 }
 
-.show-start::before, .leaderboard-btn::before {
+.show-start::before, .leaderboard-btn::before, .answers::before {
   content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.3), transparent);
+  background: linear-gradient(400deg, transparent, rgba(255, 166, 0, 0.3), transparent);
   transition: all 0.3s ease;
 }
 
-.show-start:hover::before, .leaderboard-btn:hover::before {
+.show-start:hover::before, .leaderboard-btn:hover::before, .answers:hover::before {
   left: 0;
 }
 
-.show-start:hover, .leaderboard-btn:hover {
+.show-start:hover, .leaderboard-btn:hover, .answers:hover {
   color: rgb(255, 255, 255);
   border-color: #fb923c;
 }
@@ -343,36 +345,41 @@ h1 {
 }
 
 .correct {
-  background-color: green;
+  display: flex;
+  align-items: center;
+  background-color: rgba(176, 192, 3, 0.7);
   color: white;
-  animation: correctBlink 0.6s ease-in-out 2;
+  animation: correctBlink 0.6s ease-in-out 1;
+  font-size: 1.25rem;
 }
+
 
 @keyframes correctBlink {
-  0% { background-color: green; }
-  15% { background-color: #32cd32; } 
-  30% { background-color: green; }
-  45% { background-color: #32cd32; } 
-  60% { background-color: green; }
-  75% { background-color: #32cd32; } 
-  100% { background-color: green; }
+  0% { background-color: rgba(176, 192, 3, 0.7); }
+  25% { background-color:rgba(176, 192, 3, 0.4); } 
+  50% { background-color: rgba(176, 192, 3, 0.7); }
+  75% { background-color: rgba(176, 192, 3, 0.4); } 
+  100% { background-color: rgba(176, 192, 3 0.7); }
+
 }
 
+
+
 .wrong {
-  background-color: red;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 60, 0, 0.7);
   color: white;
   animation: wrongShake 0.6s ease-in-out, wrongBlink 0.4s ease-in-out;
-  -webkit-animation: wrongShake 0.6s ease-in-out, wrongBlink 0.4s ease-in-out;
+  font-size: 1.25rem;
 }
 
 @keyframes wrongBlink {
-  0% { background-color: red; }
-  15% { background-color: #ff4d4d; } 
-  30% { background-color: red; }
-  45% { background-color: red; }
-  60% { background-color: #ff4d4d; } 
-  75% { background-color: red; }
-  100% { background-color: red; }
+  0% { background-color: rgba(255, 90, 40, 0.5); }
+  25% { background-color: rgba(255, 77, 28, 0.7); } 
+  50% { background-color: rgba(255, 90, 40, 0.5); }
+  75% { background-color: rgba(255, 77, 28, 0.7); }
+  100% { background-color: rgba(255, 90, 40, 0.5); } 
 }
 
 @keyframes wrongShake {
@@ -381,5 +388,20 @@ h1 {
   50% { transform: translateX(5px); }
   75% { transform: translateX(-5px); }
   100% { transform: translateX(0); }
+}
+
+.pause-btn {
+  font-family: "Press Start 2P", system-ui;
+  border: none;
+  background: none;
+  color: var(--orange);
+  font-size: 0.75rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  font-weight: lighter;
 }
 

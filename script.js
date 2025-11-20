@@ -395,5 +395,5 @@ init();
 
 document.getElementById("pauseBtn").addEventListener("click", function () {
     paused = !paused;
-    this.textContent = paused ? "Resume" : "Pause";
+    this.textContent = paused ? "<theme>" : "<no-theme>";
 });
