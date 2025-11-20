@@ -42,6 +42,10 @@ canvas {
   display: block;
 }
 
+canvas {
+  display: block;
+}
+
 h1 {
   color: white;
   font-size: 80px;
@@ -216,6 +220,17 @@ h1 {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 166, 0, 0.3), transparent);
   transition: all 0.3s ease;
+}
+
+.show-start:hover::before,
+.leaderboard-btn:hover::before {
+  left: 0;
+}
+
+.show-start:hover,
+.leaderboard-btn:hover {
+  color: rgb(255, 255, 255);
+  border-color: #fb923c;
 }
 
 .show-start:hover::before,
