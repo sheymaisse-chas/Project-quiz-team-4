@@ -426,6 +426,14 @@ h1 {
   font-weight: lighter;
 }
 
+.start-icon{
+  vertical-align: middle; 
+  width: 1.75em; 
+  height: 1.75em;
+  fill: currentColor; 
+  margin-right: 0.25rem; 
+  margin-top: 0.5rem;
+}
 .pause-icon {
   vertical-align: middle; 
   width: 1.5em; 
@@ -434,7 +442,6 @@ h1 {
   margin-right: -0.75rem; 
   margin-bottom: 0.25rem;
 }
-
 
 .pause-button{
   font-family: "Press Start 2P", system-ui;
