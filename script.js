@@ -16,79 +16,65 @@ function getUserName() {
 const showstart = document.getElementById("start-button");
 showstart.classList.add("show-start");
 
-// statisk timer–variabel (för framtida användning)
-// let timeLeft = 600; // 2 minuter t.ex.
-
 const countdownDisplay = document.getElementById("countdown-display");
 const startButton = document.getElementById("start-button");
 const leaderboardButton = document.getElementById("leaderboard-button");
 const pauseBtn = document.getElementById("pauseBtn");
 const resumeBtn = document.getElementById("resumeBtn");
 const overlay = document.getElementById("pause-overlay");
+const pauseWarning = document.getElementById("pause-warning");
 const timeoutElement = document.querySelector(".timeout");
 
-const TOTAL_TIME_SECONDS = 600; // totala tid
-
-let countdownTime = TOTAL_TIME_SECONDS; //nuvarande tid
-let countdownInterval; //kontroll nyckel, stoppar timern och gör så att man kan börja om
+const TOTAL_TIME_SECONDS = 600;
+let countdownTime = TOTAL_TIME_SECONDS;
+let countdownInterval;
 const QUESTION_LIMIT = 10;
-let isPaused = false;
+let isPaused = false; // FIX: detta styr nu också canvas-regnet
+let rigthToPause = false;
+let pendingPause = false;
 let resumeResolve;
 
-//Timer**
 function formatTime(totalSeconds) {
-  //totalSeconds
-  const minutes = Math.floor(totalSeconds / 60); //visar minuter
-  const seconds = totalSeconds % 60; //visar återstende sekunder
-
-  const formattedMinutes = minutes.toString().padStart(2, "0"); //gör så att den alltid visar två siffror minuter, ex 9 min visar 09 på timern
-  const formattedSeconds = seconds.toString().padStart(2, "0"); //gör så att den alltid visar två siffror sekunder, ex 9 sek visar 09 på timern
-
-  return `${formattedMinutes}:${formattedSeconds}`;
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
 
 function updateCountdown() {
-  countdownTime--; //Förkortning för variabel - 1, gör att sekundrarna räknas ner en sek i taget.
+  // canvas-regnet ska inte pausas längre // FIX: stoppar timer vid paus
 
-  countdownDisplay.textContent = formatTime(countdownTime); //Kallar på formatTime funktionen och visar nedräkningen per sekund i div texten.
+  countdownTime--;
+  countdownDisplay.textContent = formatTime(countdownTime);
 
   if (countdownTime <= 0) {
-    clearInterval(countdownInterval); //Stoppar och rensar intervallet, tillåter att den kan börjar om igen.
-    startButton.style.display = "flex"; //Återaktiverar knappen så att timern kan räkna ner igen.
+    clearInterval(countdownInterval);
+    startButton.style.display = "flex";
     startButton.textContent = "Börja om";
-    countdownTime = TOTAL_TIME_SECONDS; //Återställer till 10 min.
-    timeoutElement.style.display = "flex"; //Visar text stringen när timern tagit slut.
-    const questioncontainer = document.getElementById("question-container");
-    questioncontainer.classList.add("hidden");
+    countdownTime = TOTAL_TIME_SECONDS;
+    timeoutElement.style.display = "flex";
+    document.getElementById("question-container").classList.add("hidden");
   }
 }
 
 function startCountdown() {
   clearInterval(countdownInterval);
-  countdownTime = TOTAL_TIME_SECONDS; //Återställer timern.
-  startButton.style.display = "none"; //Gömmer start knappen
-  // startButton.classList.add("hidden"); //Gömmer start knappen
-  countdownDisplay.textContent = formatTime(countdownTime); //Kallar på formatTime funktionen och visar nedräkningen per sekund i div texten.
-  countdownInterval = setInterval(updateCountdown, 1000); //1000 behövs för att det faktist ska gå en sekund mellan varje ändring.
-  timeoutElement.style.display = "none"; //Tar bort text stringen när timern börjar om.
+  countdownTime = TOTAL_TIME_SECONDS;
+  startButton.style.display = "none";
+  countdownDisplay.textContent = formatTime(countdownTime);
+  countdownInterval = setInterval(updateCountdown, 1000);
+  timeoutElement.style.display = "none";
   inputElement.style.display = "none";
 }
 
 inputElement.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        // Stop the Enter key from triggering any default browser action (like form submission)
         event.preventDefault(); 
-        
-        // Bonus: Automatically trigger the start button's actions as well
-        // Since your start button already triggers startCountdown, startshow, and resultatRestartGame
-        // it's good practice to programmatically click it to maintain a single source of truth.
         document.getElementById('start-button').click();
     }
 });
 
 function resultatRestartGame() {
-  const resultContainer = document.getElementById("result-container");
-  resultContainer.classList.add("hidden");
+  document.getElementById("result-container").classList.add("hidden");
   startCountdown();
   init();
 }
@@ -101,15 +87,11 @@ async function getQuizQuestions() {
   try {
     const response = await fetch("questions.json");
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const data = await response.json();
     const shuffledData = shuffle(data);
-    const limitedQuestions = shuffledData.slice(0, QUESTION_LIMIT);
-
-    return limitedQuestions;
+    return shuffledData.slice(0, QUESTION_LIMIT);
   } catch (error) {
     console.error("Error:", error);
     return [];
@@ -126,13 +108,14 @@ function shuffle(arr) {
   return arr;
 }
 
-// Väntar på att användaren klickar ett svar → returnerar INDEX (0–3)
 function waitForAnswer(answerElements) {
   return new Promise((resolve) => {
     answerElements.forEach((btn, index) => {
       const handleClick = () => {
+        rigthToPause = true;
+        pauseWarning.classList.add("hidden");
         answerElements.forEach((b) => b.removeEventListener("click", handleClick));
-        resolve(index); // returnera index istället för text
+        resolve(index);
       };
       btn.addEventListener("click", handleClick);
     });
@@ -140,33 +123,37 @@ function waitForAnswer(answerElements) {
 }
 
 pauseBtn.addEventListener("click", () => {
+  if (!rigthToPause) {
+    pauseWarning.classList.remove("hidden");
+    pendingPause = true;
+    return;
+  }
+
   isPaused = !isPaused;
 
-  if (isPaused) {
-    showPausePopup();  
-  } else {
+  if (isPaused) showPausePopup();
+  else {
     hidePausePopup();
-    resume();          
+    resume();
   }
 });
 
-
 resumeBtn.addEventListener("click", () => {
-  isPaused = false; 
-  hidePausePopup(); 
-  resume();         
+  isPaused = false;
+  hidePausePopup();
+  resume();
 });
 
-function waitForUnpause(){
-  if(!isPaused) return Promise.resolve();
+function waitForUnpause() {
+  if (!isPaused) return Promise.resolve();
 
   return new Promise(r => {
     resumeResolve = r;
-  })
+  });
 }
 
-function resume(){
-  if (resumeResolve){
+function resume() {
+  if (resumeResolve) {
     resumeResolve();
     resumeResolve = null;
   }
@@ -174,27 +161,18 @@ function resume(){
 
 function showPausePopup() {
   overlay.classList.remove("hidden");
-
-  requestAnimationFrame(() => {
-    overlay.classList.add("show");   // starta fade-in
-  });
+  requestAnimationFrame(() => overlay.classList.add("show"));
 }
 
 function hidePausePopup() {
-  overlay.classList.remove("show"); 
-
-  setTimeout(() => {
-    overlay.classList.add("hidden");
-  }, 350); 
+  overlay.classList.remove("show");
+  setTimeout(() => overlay.classList.add("hidden"), 350);
 }
 
-
-
-// Renderar quizet och hanterar rätt/fel och lagrar resulat
 async function renderHTML() {
   pauseBtn.classList.remove("hidden");
   userAnswers = [];
-  console.log("Questions loaded:", questions);
+
   const answerElements = [
     document.getElementById("answer-one"),
     document.getElementById("answer-two"),
@@ -205,30 +183,22 @@ async function renderHTML() {
   const questionElement = document.getElementById("question");
 
   for (const q of questions) {
-
-    // --- Visa frågan ---
     questionElement.textContent = q.question;
 
     q.answers.forEach((answer, i) => {
       answerElements[i].textContent = answer;
-
-      // Lägg tillbaka hover-klassen
       answerElements[i].classList.add("answers");
     });
 
-    // --- Väntar på användaren ---
     const chosenIndex = await waitForAnswer(answerElements);
     userAnswers.push(chosenIndex);
 
-    // --- Hitta valda och rätt element ---
     const chosenElement = answerElements[chosenIndex];
     const correctIndex = q.correct;
     const correctElement = answerElements[correctIndex];
-    console.log(`User chose index ${chosenIndex}, correct index is ${correctIndex}`);
-    // Ta bort hover från alla
+
     answerElements.forEach(el => el.classList.remove("answers"));
 
-    // --- Visa feedback ---
     if (chosenIndex === correctIndex) {
       chosenElement.classList.add("correct");
       correctCount++;
@@ -237,39 +207,37 @@ async function renderHTML() {
       correctElement.classList.add("correct");
     }
 
-    // --- Låt användaren se animationen ---
     await new Promise((resolve) => setTimeout(resolve, 2000));
-
+    if (pendingPause) {
+      pendingPause = false;
+      isPaused = true;
+      showPausePopup();
+    }
     await waitForUnpause();
 
-    // --- Ta bort klasser inför nästa fråga ---
+    rigthToPause = false;
+
     chosenElement.classList.remove("correct", "wrong");
     correctElement.classList.remove("correct");
-
-    // Force reflow = animationerna kan återstarta nästa fråga
     void chosenElement.offsetWidth;
     void correctElement.offsetWidth;
   }
-  console.log("User answers:", userAnswers);
-  // När alla frågor är klara
+
   endQuiz();
 }
 
-// Avsluta quiz och räkna resultat
 async function endQuiz(timeOut = false) {
-  // --- Timer bortkommenterad tills vidare ---
   clearInterval(countdownInterval);
 
   const resultContainer = document.getElementById("result-container");
   const questionContainer = document.getElementById("question-container");
   questionContainer.classList.add("hidden");
   resultContainer.classList.remove("hidden");
-  leaderboardButton.classList.remove("hidden"); //Visar leaderboard knappen när quizet är slut
-  const restartBtn = document.getElementById("restart-button");
-  restartBtn.classList.remove("hidden");
+  leaderboardButton.classList.remove("hidden");
+  document.getElementById("restart-button").classList.remove("hidden");
 
   const timeUsed = `${Math.floor((TOTAL_TIME_SECONDS - countdownTime) / 60)} min ${(TOTAL_TIME_SECONDS - countdownTime) % 60} sek`;
-  const timeRemaining = countdownTime; // numeriskt för enklare sortering
+  const timeRemaining = countdownTime;
 
   document.getElementById("score").innerHTML = `
     <strong>Du fick ${correctCount} av ${questions.length} rätt!</strong><br>
@@ -279,66 +247,48 @@ async function endQuiz(timeOut = false) {
     <strong>Tid kvar:</strong> ${Math.floor(timeRemaining / 60)} min ${timeRemaining % 60} sek
   `;
 
-  // spara via modul i localStorage + Firebase
   await saveResultToLocal(correctCount, questions, timeUsed, timeRemaining, userName);
 }
 
 function startshow() {
-  
   const startshow = document.getElementById("question-container");
   startshow.classList.remove("hidden");
   getUserName();
 
-  // Göm leaderboard om den är synlig
   const leaderboard = document.getElementById("leaderboard-container");
-  if (!leaderboard.classList.contains("hidden")) {
-    leaderboard.classList.add("hidden");
-  }
-  leaderboardButton.classList.add("hidden"); //Gömmer leaderboard knappen när quizet startas.
+  if (!leaderboard.classList.contains("hidden")) leaderboard.classList.add("hidden");
+
+  leaderboardButton.classList.add("hidden");
   renderHTML();
 }
 
 async function init() {
   correctCount = 0;
   const fetchedQuestions = await getQuizQuestions();
-  if (fetchedQuestions.length > 0) {
-    questions = fetchedQuestions;
-    console.log("questions rendered");
-  } else {
-    console.error("Inga frågor kunde hämtas.");
-  }
+  if (fetchedQuestions.length > 0) questions = fetchedQuestions;
+  else console.error("Inga frågor kunde hämtas.");
 }
 
 function restartQuiz() {
-  // Göm resultat
   document.getElementById("result-container").classList.add("hidden");
-
-  // Töm resultattext
   document.getElementById("score").innerHTML = "";
 
-  // Göm restart-knappen
   const restartBtn = document.getElementById("restart-button");
   restartBtn.classList.add("hidden");
 
-  // Visa leaderboard-knappen igen om du vill
   leaderboardButton.classList.remove("hidden");
-  // startButton.classList.remove("hidden");
   startButton.style.display = "flex";
-
-  // Starta om timer + quiz
 
   init();
 }
 
 document.getElementById("restart-button").addEventListener("click", restartQuiz);
 
-// Hämta topp 10 från localStorage och visa
 async function showLeaderboard() {
   const container = document.getElementById("leaderboard-container");
   const list = document.getElementById("leaderboard-list");
   list.innerHTML = "";
 
-  // 🔹 Hämta resultat via modulen (hämtar från localStorage och ev. Firebase)
   const results = await loadResults();
 
   if (!results || results.length === 0) {
@@ -347,7 +297,6 @@ async function showLeaderboard() {
     return;
   }
 
-  // 🔹 Sortera efter score (desc), sen timeRemaining (desc)
   results.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
     return b.timeRemaining - a.timeRemaining;
@@ -355,17 +304,14 @@ async function showLeaderboard() {
 
   const topTen = results.slice(0, 10);
 
-  // 🔹 Skapa HTML-rader för top 10
   topTen.forEach((r, i) => {
     const li = document.createElement("li");
 
-    // 🔹 Tilldela klass för topp 3
     if (i === 0) li.classList.add("firstRanked");
     else if (i === 1) li.classList.add("secondRanked");
     else if (i === 2) li.classList.add("thirdRanked");
-    else li.classList.add("ranked"); // vanlig klass för resten
+    else li.classList.add("ranked");
 
-    // 🔹 Sätt HTML – topp 3 har medalj, resten får platsnummer
     let rankDisplay;
     if (i === 0) rankDisplay = "🥇";
     else if (i === 1) rankDisplay = "🥈";
@@ -386,73 +332,49 @@ async function showLeaderboard() {
   document.getElementById("result-container").classList.add("hidden");
 }
 
-// Göm leaderboard
 document.getElementById("close-leaderboard").addEventListener("click", () => {
   document.getElementById("leaderboard-container").classList.add("hidden");
 });
 
-// Knapp för att visa leaderboard
 document.getElementById("leaderboard-button").addEventListener("click", showLeaderboard);
 
 init();
 
+// ========================= MATRIX RAIN =========================
+// FIX: använder nu isPaused istället för egen paus-variabel
 
-// geting canvas by Boujjou Achraf
-        var c = document.getElementById("c");
-        var ctx = c.getContext("2d");
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
 
-        //making the canvas full screen
-        c.height = window.innerHeight;
-        c.width = window.innerWidth;
+c.height = window.innerHeight;
+c.width = window.innerWidth;
 
-        //chinese characters - taken from the unicode charset
-        var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-        //converting the string into an array of single characters
-        matrix = matrix.split("");
+var matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}`";
+matrix = matrix.split("");
 
-        var font_size = 10;
-        var columns = c.width/font_size; //number of columns for the rain
-        //an array of drops - one per column
-        var drops = [];
-        //x below is the x coordinate
-        //1 = y co-ordinate of the drop(same for every drop initially)
-        for(var x = 0; x < columns; x++)
-            drops[x] = 1; 
+var font_size = 10;
+var columns = c.width / font_size;
+var drops = [];
 
-        //drawing the characters
-        function draw()
-        {
-            if  (paused) return;
-            //Black BG for the canvas
-            //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-            ctx.fillRect(0, 0, c.width, c.height);
+for (var x = 0; x < columns; x++) drops[x] = 1;
 
-            ctx.fillStyle = "#cd7f32";//green text
-            ctx.font = font_size + "px arial";
-            //looping over drops
-            for(var i = 0; i < drops.length; i++)
-            {
-                //a random chinese character to print
-                var text = matrix[Math.floor(Math.random()*matrix.length)];
-                //x = i*font_size, y = value of drops[i]*font_size
-                ctx.fillText(text, i*font_size, drops[i]*font_size);
+function draw() {
+  if (isPaused) return; // FIX: följer nu quizzets paus
 
-                //sending the drop back to the top randomly after it has crossed the screen
-                //adding a randomness to the reset to make the drops scattered on the Y axis
-                if(drops[i]*font_size > c.height && Math.random() > 0.975)
-                    drops[i] = 0;
+  ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+  ctx.fillRect(0, 0, c.width, c.height);
 
-                //incrementing Y coordinate
-                drops[i]++;
-            }
-        }
+  ctx.fillStyle = "#cd7f32";
+  ctx.font = font_size + "px arial";
 
-        setInterval(draw, 35);
+  for (var i = 0; i < drops.length; i++) {
+    var text = matrix[Math.floor(Math.random() * matrix.length)];
+    ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-        let paused = false;
+    if (drops[i] * font_size > c.height && Math.random() > 0.975) drops[i] = 0;
 
-document.getElementById("pauseBtn").addEventListener("click", function () {
-    paused = !paused;
-    this.textContent = paused ? "Resume" : "Pause";
-});
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 35);
