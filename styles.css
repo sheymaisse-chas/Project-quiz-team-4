@@ -457,7 +457,7 @@ h1 {
   font-family: "Press Start 2P", system-ui;
   border: none;
   background: none;
-  color: var(--orange);
+  color: rgb(183, 183, 183);
   font-size: 0.75rem;
   cursor: pointer;
   position: absolute;

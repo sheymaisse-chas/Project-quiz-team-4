@@ -28,7 +28,7 @@ const timeoutElement = document.querySelector(".timeout");
 const TOTAL_TIME_SECONDS = 600;
 let countdownTime = TOTAL_TIME_SECONDS;
 let countdownInterval;
-const QUESTION_LIMIT = 1;
+const QUESTION_LIMIT = 20;
 let isPaused = false; // FIX: detta styr nu också canvas-regnet
 let rigthToPause = false;
 let pendingPause = false;
@@ -387,5 +387,5 @@ setInterval(draw, 35);
 
 document.querySelector(".theme-btn").addEventListener("click", function () {
     paused = !paused;
-    this.textContent = paused ? "<theme>" : "<no-theme>";
+    this.textContent = paused ? "<theme>" : "<pause-theme>";
 });
