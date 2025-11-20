@@ -28,7 +28,7 @@ const timeoutElement = document.querySelector(".timeout");
 const TOTAL_TIME_SECONDS = 600;
 let countdownTime = TOTAL_TIME_SECONDS;
 let countdownInterval;
-const QUESTION_LIMIT = 10;
+const QUESTION_LIMIT = 1;
 let isPaused = false; // FIX: detta styr nu också canvas-regnet
 let rigthToPause = false;
 let pendingPause = false;
@@ -39,6 +39,7 @@ function formatTime(totalSeconds) {
   const seconds = totalSeconds % 60;
   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
+
 
 function updateCountdown() {
   // canvas-regnet ska inte pausas längre // FIX: stoppar timer vid paus
@@ -344,8 +345,7 @@ document.getElementById("leaderboard-button").addEventListener("click", showLead
 
 init();
 
-// ========================= MATRIX RAIN =========================
-// FIX: använder nu isPaused istället för egen paus-variabel
+//MATRIX RAIN
 
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
@@ -363,7 +363,7 @@ var drops = [];
 for (var x = 0; x < columns; x++) drops[x] = 1;
 
 function draw() {
-  if (isPaused) return; // FIX: följer nu quizzets paus
+  if (paused) return; 
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
   ctx.fillRect(0, 0, c.width, c.height);
@@ -383,9 +383,9 @@ function draw() {
 
 setInterval(draw, 35);
 
-        let paused = false;
+  let paused = false;
 
-document.getElementById("themeBtn").addEventListener("click", function () {
+document.querySelector(".theme-btn").addEventListener("click", function () {
     paused = !paused;
     this.textContent = paused ? "<theme>" : "<no-theme>";
 });

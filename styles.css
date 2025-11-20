@@ -115,7 +115,7 @@ h1 {
   height: 20px;
   cursor: pointer;
   transition: all 0.1s ease;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .answers:hover {
@@ -243,6 +243,10 @@ h1 {
   border-color: #fb923c;
 }
 
+.leaderboard-btn, .show-start {
+  margin-top: 2rem;
+}
+
 /* ==== Leaderboard-styling ==== */
 #leaderboard-container {
   display: flex;
@@ -271,6 +275,7 @@ h1 {
   border-radius: 8px;
   overflow: hidden;
 }
+
 
 #leaderboard-list li {
   display: flex;
