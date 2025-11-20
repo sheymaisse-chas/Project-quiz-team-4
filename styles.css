@@ -16,7 +16,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;  /* makes sure it sits ABOVE the canvas */
+  z-index: 10; /* makes sure it sits ABOVE the canvas */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,10 @@ body {
   font-weight: 700;
   font-family: "Source Code Pro", monospace;
   background: black;
+}
 
+canvas {
+  display: block;
 }
 
 canvas {
@@ -129,8 +132,6 @@ h1 {
   color: var(--orange);
   font-size: 20px;
 }
-
-
 
 @media (max-width: 700px) {
   #question-container {
@@ -231,6 +232,16 @@ h1 {
   border-color: #fb923c;
 }
 
+.show-start:hover::before,
+.leaderboard-btn:hover::before {
+  left: 0;
+}
+
+.show-start:hover,
+.leaderboard-btn:hover {
+  color: rgb(255, 255, 255);
+  border-color: #fb923c;
+}
 
 /* ==== Leaderboard-styling ==== */
 #leaderboard-container {
@@ -383,11 +394,21 @@ h1 {
 }
 
 @keyframes wrongShake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .pause-btn {
