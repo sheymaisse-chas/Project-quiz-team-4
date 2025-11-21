@@ -427,7 +427,7 @@ document.getElementById("leaderboard-button").addEventListener("click", showLead
 init();
 
 //MATRIX RAIN
-
+let rainPaused = false;
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 
@@ -444,7 +444,7 @@ var drops = [];
 for (var x = 0; x < columns; x++) drops[x] = 1;
 
 function draw() {
-  if (paused) return; 
+ if (isPaused || rainPaused) return; // ← istället för paused
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
   ctx.fillRect(0, 0, c.width, c.height);
@@ -456,7 +456,8 @@ function draw() {
     var text = matrix[Math.floor(Math.random() * matrix.length)];
     ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-    if (drops[i] * font_size > c.height && Math.random() > 0.975) drops[i] = 0;
+    if (drops[i] * font_size > c.height && Math.random() > 0.975)
+      drops[i] = 0;
 
     drops[i]++;
   }
@@ -464,9 +465,9 @@ function draw() {
 
 setInterval(draw, 35);
 
-  let paused = false;
 
+// styr endast matrix-regnet
 document.querySelector(".theme-btn").addEventListener("click", function () {
-    paused = !paused;
-    this.textContent = paused ? "<theme>" : "<no-theme>";
+    rainPaused = !rainPaused;
+    this.textContent = rainPaused ? "<theme>" : "<no-theme>";
 });
