@@ -28,11 +28,25 @@ const timeoutElement = document.querySelector(".timeout");
 const TOTAL_TIME_SECONDS = 600;
 let countdownTime = TOTAL_TIME_SECONDS;
 let countdownInterval;
-const QUESTION_LIMIT = 1;
+const QUESTION_LIMIT = 5;
 let isPaused = false; // FIX: detta styr nu också canvas-regnet
 let rigthToPause = false;
 let pendingPause = false;
 let resumeResolve;
+
+const sounds = {
+  correct: new Audio("./media/sounds/correct.mp3"),
+  wrong: new Audio("./media/sounds/incorrect.mp3"),
+  shame: new Audio("./media/sounds/aww-man.mp3"),
+  applause: new Audio("./media/sounds/applause.mp3"),
+  champion: new Audio("./media/sounds/champion.mp3")
+};
+
+function playSound(key) {
+  if (!sounds[key]) return;
+  sounds[key].currentTime = 0;
+  sounds[key].play().catch(() => {});
+}
 
 function formatTime(totalSeconds) {
   const minutes = Math.floor(totalSeconds / 60);
@@ -203,9 +217,11 @@ async function renderHTML() {
     answerElements.forEach(el => el.classList.remove("answers"));
 
     if (chosenIndex === correctIndex) {
+      playSound("correct");
       chosenElement.classList.add("correct");
       correctCount++;
     } else {
+      playSound("wrong");
       chosenElement.classList.add("wrong");
       correctElement.classList.add("correct");
     }
@@ -241,6 +257,16 @@ async function endQuiz(timeOut = false) {
 
   const timeUsed = `${Math.floor((TOTAL_TIME_SECONDS - countdownTime) / 60)} min ${(TOTAL_TIME_SECONDS - countdownTime) % 60} sek`;
   const timeRemaining = countdownTime;
+
+  const percent = correctCount / questions.length * 100;
+
+  if (percent < 60) {
+    playSound("shame");
+  } else if (percent < 80) {
+    playSound("applause");
+  } else {
+    playSound("champion");
+  }
 
   document.getElementById("score").innerHTML = `
     <strong>Du fick ${correctCount} av ${questions.length} rätt!</strong><br>
