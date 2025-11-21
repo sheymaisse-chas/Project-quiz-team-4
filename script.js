@@ -28,7 +28,7 @@ const timeoutElement = document.querySelector(".timeout");
 const TOTAL_TIME_SECONDS = 600;
 let countdownTime = TOTAL_TIME_SECONDS;
 let countdownInterval;
-const QUESTION_LIMIT = 5;
+const QUESTION_LIMIT = 1;
 let isPaused = false; // FIX: detta styr nu också canvas-regnet
 let rigthToPause = false;
 let pendingPause = false;
@@ -262,10 +262,13 @@ async function endQuiz(timeOut = false) {
 
   if (percent < 60) {
     playSound("shame");
+    spawnFX("bad");
   } else if (percent < 80) {
     playSound("applause");
+    spawnFX("mid");
   } else {
     playSound("champion");
+    spawnFX("good");
   }
 
   document.getElementById("score").innerHTML = `
@@ -366,6 +369,56 @@ async function showLeaderboard() {
 document.getElementById("close-leaderboard").addEventListener("click", () => {
   document.getElementById("leaderboard-container").classList.add("hidden");
 });
+
+function spawnFX(type) {
+  const fxContainer = document.getElementById("fx-container");
+  fxContainer.innerHTML = ""; // rensa
+
+  const emojisGood = ["✨", "🎉", "💥", "⭐", "🔥", "💫"];
+  const emojisMid  = ["⭐", "👍", "💫"];
+  const emojisBad  = ["💀", "☠️", "💣", "🩸"];
+
+  let list = type === "good" ? emojisGood :
+             type === "mid"  ? emojisMid  :
+                               emojisBad;
+
+  const amount = 18; // fler element
+
+  for (let i = 0; i < amount; i++) {
+    const el = document.createElement("div");
+    el.classList.add("fx");
+
+    // animationstyp
+    if (type === "bad") el.classList.add("fx-fall");
+    else el.classList.add("fx-burst");
+
+    el.textContent = list[Math.floor(Math.random() * list.length)];
+
+    // 🔥 bredare spridning
+    const spread = 350;
+
+    // burst → sprid åt alla håll
+    if (type !== "bad") {
+      el.style.setProperty("--dx", (Math.random() * spread - spread/2) + "px");
+      el.style.setProperty("--dy", (Math.random() * spread - spread/2) + "px");
+    }
+
+    // bad → faller rakt NED men sprids brett horisontellt
+    else {
+      el.style.setProperty("--dx", (Math.random() * spread - spread/2) + "px");
+    }
+
+    // ⏱ slumpad längd 2–5 sek
+    const duration = 2 + Math.random() * 3;
+    el.style.animationDuration = duration + "s";
+
+    // slumpad liten delay
+    el.style.animationDelay = (Math.random() * 0.5) + "s";
+
+    fxContainer.appendChild(el);
+  }
+}
+
 
 document.getElementById("leaderboard-button").addEventListener("click", showLeaderboard);
 
