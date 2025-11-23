@@ -471,3 +471,14 @@ document.querySelector(".theme-btn").addEventListener("click", function () {
     rainPaused = !rainPaused;
     this.textContent = rainPaused ? "<theme>" : "<no-theme>";
 });
+
+async function initFirebase() {
+  const config = await fetch('./firebaseConfig.json').then(r => r.json());
+
+  // Init Firebase
+  const app = firebase.initializeApp(config);
+
+  console.log("Firebase init:", app);
+}
+
+initFirebase();
