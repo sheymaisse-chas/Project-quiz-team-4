@@ -3,6 +3,7 @@
   "authDomain": "",
   "projectId": "",
   "storageBucket": "",
-  "messagingSenderId": "",
-  "appId": ""
+  "senderId": "",
+  "appId": "",
+  "measurementId": ""
 } 
