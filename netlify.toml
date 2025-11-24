@@ -1,0 +1,3 @@
+[build]
+  command = "node scripts/create-firebase-config.js"
+  publish = "public"
