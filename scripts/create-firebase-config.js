@@ -8,6 +8,7 @@ const config = {
   storageBucket: process.env.VITE_STORAGE_BUCKET,
   messagingSenderId: process.env.VITE_MESSAGING_SENDER_ID,
   appId: process.env.VITE_APP_ID,
+  measurementId: process.env.VITE_MEASUREMENT_ID
 };
 
 const dir = path.join(__dirname, '..', 'public');
