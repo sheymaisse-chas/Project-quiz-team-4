@@ -12,7 +12,7 @@ const config = {
 };
 
 const dir = path.join(__dirname, '..', 'public');
-const filePath = path.join(dir, 'firebaseConfig.template.json');
+const filePath = path.join(dir, 'firebaseConfig.json');
 
 // Create the directory if it doesn't exist
 if (!fs.existsSync(dir)) {
