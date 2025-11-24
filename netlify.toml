@@ -1,6 +1,3 @@
 [build]
   command = "./scripts/create-firebase-config.js"
-  publish = public
-  commandOrigin: config
-  publish: /opt/build/repo/public
-  publishOrigin: config
+  publish = "public"
