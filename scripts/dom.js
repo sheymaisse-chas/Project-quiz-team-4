@@ -1,0 +1,10 @@
+export const showstart = document.getElementById("start-button");
+export const countdownDisplay = document.getElementById("countdown-display");
+export const startButton = document.getElementById("start-button");
+export const leaderboardButton = document.getElementById("leaderboard-button");
+export const pauseBtn = document.getElementById("pauseBtn");
+export const resumeBtn = document.getElementById("resumeBtn");
+export const overlay = document.getElementById("pause-overlay");
+export const pauseWarning = document.getElementById("pause-warning");
+export const timeoutElement = document.querySelector(".timeout");
+export const inputElement = document.querySelector(".user-name");

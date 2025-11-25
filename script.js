@@ -1,4 +1,7 @@
 import { saveResultToLocal, loadResults } from "./quizStorage.js";
+import { playSound, spawnFX } from "./scripts/effects.js";
+import { showstart, countdownDisplay, startButton, leaderboardButton, pauseBtn, resumeBtn, overlay, pauseWarning, timeoutElement, inputElement } from "./scripts/dom.js";
+import { startCountdown, updateCountdown, TOTAL_TIME_SECONDS, countdownTime, state, togglePause, countdownInterval } from "./scripts/timer.js";
 
 console.log("Script loaded successfully.");
 
@@ -6,83 +9,22 @@ let questions = [];
 let userAnswers = [];
 let userName = "";
 let correctCount = 0;
-let inputElement = document.querySelector(".user-name");
+
+// const TOTAL_TIME_SECONDS = 600;
+// let countdownTime = TOTAL_TIME_SECONDS;
+// let countdownInterval;
+// let isPaused = false; // FIX: detta styr nu också canvas-regnet
+
+let rigthToPause = false;
+let pendingPause = false;
+let resumeResolve;
+const QUESTION_LIMIT = 3;
+
+showstart.classList.add("show-start");
 
 function getUserName() {
   userName = inputElement.value;
   console.log("The user name is:", userName);
-}
-
-const showstart = document.getElementById("start-button");
-showstart.classList.add("show-start");
-
-const countdownDisplay = document.getElementById("countdown-display");
-const startButton = document.getElementById("start-button");
-const leaderboardButton = document.getElementById("leaderboard-button");
-const pauseBtn = document.getElementById("pauseBtn");
-const resumeBtn = document.getElementById("resumeBtn");
-const overlay = document.getElementById("pause-overlay");
-const pauseWarning = document.getElementById("pause-warning");
-const timeoutElement = document.querySelector(".timeout");
-
-const TOTAL_TIME_SECONDS = 600;
-let countdownTime = TOTAL_TIME_SECONDS;
-let countdownInterval;
-const QUESTION_LIMIT = 3;
-let isPaused = false; // FIX: detta styr nu också canvas-regnet
-let rigthToPause = false;
-let pendingPause = false;
-let resumeResolve;
-
-const sounds = {
-  correct: new Audio("./media/sounds/correct.mp3"),
-  wrong: new Audio("./media/sounds/incorrect.mp3"),
-  shame: new Audio("./media/sounds/aww-man.mp3"),
-  applause: new Audio("./media/sounds/applause.mp3"),
-  champion: new Audio("./media/sounds/champion.mp3")
-};
-
-function playSound(key) {
-  if (!sounds[key]) return;
-  sounds[key].currentTime = 0;
-  sounds[key].play().catch(() => {});
-}
-
-function formatTime(totalSeconds) {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-}
-
-
-function updateCountdown() {
-  // Stoppa nedräkningen när spelet är pausat
-  if (isPaused) return;
-
-  countdownTime--;
-  countdownDisplay.textContent = formatTime(countdownTime);
-
-  if (countdownTime <= 0) {
-    clearInterval(countdownInterval);
-    startButton.style.display = "flex";
-    startButton.textContent = "Börja om";
-    countdownTime = TOTAL_TIME_SECONDS;
-    timeoutElement.style.display = "flex";
-    document.getElementById("question-container").classList.add("hidden");
-  }
-}
-
-
-function startCountdown() {
-  clearInterval(countdownInterval);
-  countdownTime = TOTAL_TIME_SECONDS;
-  startButton.style.display = "none";
-  countdownDisplay.textContent = formatTime(countdownTime);
-  countdownInterval = setInterval(updateCountdown, 1000);
-  timeoutElement.style.display = "none";
-  inputElement.style.display = "none";
-  const h1div = document.getElementById("h1"); // hide tittle
-  h1div.style.display = "none"; // hide tittle
 }
 
 inputElement.addEventListener('keydown', function(event) {
@@ -92,15 +34,65 @@ inputElement.addEventListener('keydown', function(event) {
     }
 });
 
+startButton.addEventListener("click", startCountdown);
+startButton.addEventListener("click", startshow);
+startButton.addEventListener("click", resultatRestartGame);
+
+document.getElementById("restart-button").addEventListener("click", restartQuiz);
+
+document.getElementById("leaderboard-button").addEventListener("click", showLeaderboard);
+
+document.getElementById("close-leaderboard").addEventListener("click", () => {
+  document.getElementById("leaderboard-container").classList.add("hidden");
+});
+
+
+// function formatTime(totalSeconds) {
+//   const minutes = Math.floor(totalSeconds / 60);
+//   const seconds = totalSeconds % 60;
+//   return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+// }
+
+
+// function updateCountdown() {
+//   // Stoppa nedräkningen när spelet är pausat
+//   if (isPaused) return;
+
+//   countdownTime--;
+//   countdownDisplay.textContent = formatTime(countdownTime);
+
+//   if (countdownTime <= 0) {
+//     clearInterval(countdownInterval);
+//     startButton.style.display = "flex";
+//     startButton.textContent = "Börja om";
+//     countdownTime = TOTAL_TIME_SECONDS;
+//     timeoutElement.style.display = "flex";
+//     document.getElementById("question-container").classList.add("hidden");
+//   }
+// }
+
+
+// function startCountdown() {
+//   clearInterval(countdownInterval);
+//   countdownTime = TOTAL_TIME_SECONDS;
+//   startButton.style.display = "none";
+//   countdownDisplay.textContent = formatTime(countdownTime);
+//   countdownInterval = setInterval(updateCountdown, 1000);
+//   timeoutElement.style.display = "none";
+//   inputElement.style.display = "none";
+//   const h1div = document.getElementById("h1"); // hide tittle
+//   h1div.style.display = "none"; // hide tittle
+// }
+
+
+
 function resultatRestartGame() {
   document.getElementById("result-container").classList.add("hidden");
   startCountdown();
   init();
 }
 
-startButton.addEventListener("click", startCountdown);
-startButton.addEventListener("click", startshow);
-startButton.addEventListener("click", resultatRestartGame);
+
 
 async function getQuizQuestions() {
   try {
@@ -148,9 +140,9 @@ pauseBtn.addEventListener("click", () => {
     return;
   }
 
-  isPaused = !isPaused;
+  togglePause();
 
-  if (isPaused) showPausePopup();
+  if (state.isPaused) showPausePopup();
   else {
     hidePausePopup();
     resume();
@@ -158,13 +150,13 @@ pauseBtn.addEventListener("click", () => {
 });
 
 resumeBtn.addEventListener("click", () => {
-  isPaused = false;
+  state.isPaused = false;
   hidePausePopup();
   resume();
 });
 
 function waitForUnpause() {
-  if (!isPaused) return Promise.resolve();
+  if (!state.isPaused) return Promise.resolve();
 
   return new Promise(r => {
     resumeResolve = r;
@@ -231,7 +223,7 @@ async function renderHTML() {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     if (pendingPause) {
       pendingPause = false;
-      isPaused = true;
+      state.isPaused = true;
       showPausePopup();
     }
     await waitForUnpause();
@@ -318,7 +310,7 @@ function restartQuiz() {
   init();
 }
 
-document.getElementById("restart-button").addEventListener("click", restartQuiz);
+
 
 async function showLeaderboard() {
   const container = document.getElementById("leaderboard-container");
@@ -368,61 +360,12 @@ async function showLeaderboard() {
   document.getElementById("result-container").classList.add("hidden");
 }
 
-document.getElementById("close-leaderboard").addEventListener("click", () => {
-  document.getElementById("leaderboard-container").classList.add("hidden");
-});
-
-function spawnFX(type) {
-  const fxContainer = document.getElementById("fx-container");
-  fxContainer.innerHTML = ""; // rensa
-
-  const emojisGood = ["✨", "🎉", "💥", "⭐", "🔥", "💫"];
-  const emojisMid  = ["⭐", "👍", "💫"];
-  const emojisBad  = ["💀", "☠️", "💣", "🩸"];
-
-  let list = type === "good" ? emojisGood :
-             type === "mid"  ? emojisMid  :
-                               emojisBad;
-
-  const amount = 18; // fler element
-
-  for (let i = 0; i < amount; i++) {
-    const el = document.createElement("div");
-    el.classList.add("fx");
-
-    // animationstyp
-    if (type === "bad") el.classList.add("fx-fall");
-    else el.classList.add("fx-burst");
-
-    el.textContent = list[Math.floor(Math.random() * list.length)];
-
-    // 🔥 bredare spridning
-    const spread = 350;
-
-    // burst → sprid åt alla håll
-    if (type !== "bad") {
-      el.style.setProperty("--dx", (Math.random() * spread - spread/2) + "px");
-      el.style.setProperty("--dy", (Math.random() * spread - spread/2) + "px");
-    }
-
-    // bad → faller rakt NED men sprids brett horisontellt
-    else {
-      el.style.setProperty("--dx", (Math.random() * spread - spread/2) + "px");
-    }
-
-    // ⏱ slumpad längd 2–5 sek
-    const duration = 2 + Math.random() * 3;
-    el.style.animationDuration = duration + "s";
-
-    // slumpad liten delay
-    el.style.animationDelay = (Math.random() * 0.5) + "s";
-
-    fxContainer.appendChild(el);
-  }
-}
 
 
-document.getElementById("leaderboard-button").addEventListener("click", showLeaderboard);
+
+
+
+
 
 init();
 
@@ -444,7 +387,7 @@ var drops = [];
 for (var x = 0; x < columns; x++) drops[x] = 1;
 
 function draw() {
- if (isPaused || rainPaused) return; // ← istället för paused
+ if (state.isPaused || rainPaused) return; // ← istället för paused
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
   ctx.fillRect(0, 0, c.width, c.height);
