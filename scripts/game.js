@@ -1,7 +1,7 @@
-import { startCountdown, state, countdownInterval, TOTAL_TIME_SECONDS, countdownTime } from "./timer.js";
+import { state, countdownInterval, TOTAL_TIME_SECONDS, countdownTime } from "./timer.js";
 import { saveResultToLocal } from "../quizStorage.js";
 import { playSound, spawnFX } from "./effects.js";
-import { overlay, pauseBtn, resumeBtn, leaderboardButton, startButton, pauseWarning } from "./dom.js";
+import { overlay, pauseBtn, leaderboardButton, startButton, pauseWarning } from "./dom.js";
 import { getQuizQuestions } from "./questions.js ";
 
 export let questions = [];
