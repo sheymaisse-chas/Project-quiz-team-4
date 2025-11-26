@@ -13,7 +13,7 @@
 
 .content {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10; /* makes sure it sits ABOVE the canvas */
@@ -50,14 +50,14 @@ canvas {
 .quizscript-title {
   display: flex;
   color: white;
-  font-size: 24px; 
+  font-size: 24px;
   align-items: center;
   justify-content: center;
 }
 
 h1 {
   color: white;
-  font-size: 48px; 
+  font-size: 48px;
   font-family: "Source Code Pro", monospace;
   margin-bottom: 80px;
 }
@@ -146,8 +146,16 @@ h1 {
 }
 
 @media (max-width: 700px) {
+  .quizscript-title {
+    font-size: 15px;
+    margin-bottom: 0;
+    margin-top: 5px !important;
+  }
+
+  #header-title,
   h1 {
-    font-size: 40px;
+    font-size: 20px;
+    margin-bottom: 0;
   }
 
   .userDiv {
@@ -160,12 +168,9 @@ h1 {
     font-size: 8px !important;
   }
 
-  .new-user {
-    margin-top: 40px;
-  }
-
   .theme-btn {
-    margin-top: 20px;
+    margin-right: 10px !important;
+    margin-top: 29px !important;
   }
 
   #question-container {
@@ -177,7 +182,7 @@ h1 {
   #question {
     padding: 15px;
     font-size: 14px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   #answer-one,
@@ -185,7 +190,7 @@ h1 {
   #answer-three,
   #answer-four {
     width: 95%;
-    height: 50px;
+    height: 30px;
     font-size: 12px;
   }
 
@@ -207,6 +212,14 @@ h1 {
     align-items: center;
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .userDiv {
+    margin-top: 10px;
+  }
+
+  .content {
+    top: 0%;
   }
 }
 
@@ -693,7 +706,7 @@ h1 {
 }
 
 .userDiv {
-  color: white;
+  color: rgb(238, 241, 54);
 }
 
 #fx-container {
@@ -763,5 +776,10 @@ h1 {
   display: block;
 }
 
+#header-title {
+  text-align: center;
+}
 
-
+.quizscript-title {
+  margin: 20px 0 20px 0;
+}
