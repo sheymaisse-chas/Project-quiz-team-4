@@ -1,27 +1,43 @@
 import { state } from "./timer.js";
 
-
-//MATRIX RAIN
 let rainPaused = false;
-
 
 let c = document.getElementById("c");
 let ctx = c.getContext("2d");
 
-c.height = window.innerHeight;
-c.width = window.innerWidth;
-
-let matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}`";
-matrix = matrix.split("");
+let matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}`".split("");
 
 let font_size = 10;
-let columns = c.width / font_size;
+let columns;
 let drops = [];
 
-for (let x = 0; x < columns; x++) drops[x] = 1;
+// gör en funktion som kan köras även vid resize
+// function resizeCanvas() {
+//   c.height = window.innerHeight;
+//   c.width = window.innerWidth;
+
+//   columns = Math.floor(c.width / font_size);
+//   drops = [];
+
+//   for (let x = 0; x < columns; x++) drops[x] = 1;
+// }
+
+export function resizeCanvas() {
+  c.width = window.innerWidth;
+  c.height = window.innerHeight;
+
+  columns = Math.floor(c.width / font_size);
+  drops = new Array(columns).fill(1);
+}
+
+// kör direkt vid start
+resizeCanvas();
+
+// kör när fönstret ändras
+window.addEventListener("resize", resizeCanvas);
 
 export function draw() {
- if (state.isPaused || rainPaused) return; // ← istället för paused
+  if (state.isPaused || rainPaused) return;
 
   ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
   ctx.fillRect(0, 0, c.width, c.height);
@@ -33,15 +49,16 @@ export function draw() {
     let text = matrix[Math.floor(Math.random() * matrix.length)];
     ctx.fillText(text, i * font_size, drops[i] * font_size);
 
-    if (drops[i] * font_size > c.height && Math.random() > 0.975)
+    if (drops[i] * font_size > c.height && Math.random() > 0.975) {
       drops[i] = 0;
+    }
 
     drops[i]++;
   }
 }
 
-// styr endast matrix-regnet
+// knapp
 document.querySelector(".theme-btn").addEventListener("click", function () {
-    rainPaused = !rainPaused;
-    this.textContent = rainPaused ? "<theme>" : "<no-theme>";
+  rainPaused = !rainPaused;
+  this.textContent = rainPaused ? "<theme>" : "<no-theme>";
 });

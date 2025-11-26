@@ -1,6 +1,6 @@
 import { showstart, startButton, leaderboardButton, pauseBtn, resumeBtn, overlay, pauseWarning, timeoutElement, inputElement } from "./scripts/dom.js";
 import { startCountdown, state, togglePause } from "./scripts/timer.js";
-import { draw } from "./scripts/matrix.js";
+import { draw, resizeCanvas } from "./scripts/matrix.js";
 
 import { showLeaderboard } from "./scripts/leaderBoard.js";
 import { init, renderHTML, endQuiz, restartQuiz, setUserName, userName, rigthToPause, togglePendingPause, hidePausePopup, resume, showPausePopup} from "./scripts/game.js";
@@ -75,45 +75,14 @@ function startshow() {
   document.querySelector(".userDiv").textContent = userName; //skapar div user
 }
 
-// async function init() {
-//   correctCount = 0;
-//   const fetchedQuestions = await getQuizQuestions();
-//   if (fetchedQuestions.length > 0) questions = fetchedQuestions;
-//   else console.error("Inga frågor kunde hämtas.");
-// }
-
-// function restartQuiz() {
-//   document.getElementById("result-container").classList.add("hidden");
-//   document.getElementById("score").innerHTML = "";
-
-//   const restartBtn = document.getElementById("restart-button");
-//   restartBtn.classList.add("hidden");
-
-//   leaderboardButton.classList.remove("hidden");
-//   startButton.style.display = "flex";
-
-//   init();
-// }
-
-
-
-
-
-
-
-
-
-
-
-
 init();
 
-
-
 setInterval(draw, 35);
+// setInterval(draw, 35);
 
 document.getElementById('newuser').addEventListener("click", () => {
   location.reload();
 });
+
 
 
