@@ -13,7 +13,7 @@
 
 .content {
   position: absolute;
-  top: 10%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10; /* makes sure it sits ABOVE the canvas */
@@ -219,7 +219,11 @@ h1 {
   }
 
   .content {
-    top: 0%;
+    top: 50%;
+  }
+
+  .user-name {
+    margin-top: 30px;
   }
 }
 
