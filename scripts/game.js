@@ -9,6 +9,8 @@ export let userAnswers = [];
 export let userName = "";
 export let correctCount = 0;
 
+const newuser = document.getElementById("newuser");
+
 export function setUserName(value) {
   userName = value;
 }
@@ -143,6 +145,7 @@ export async function endQuiz(timeOut = false) {
   const resultContainer = document.getElementById("result-container");
   const questionContainer = document.getElementById("question-container");
   questionContainer.classList.add("hidden");
+  newuser.classList.remove("hidden");
   resultContainer.classList.remove("hidden");
   leaderboardButton.classList.remove("hidden");
   pauseBtn.classList.add("hidden");
@@ -184,7 +187,7 @@ export function restartQuiz() {
 
   const restartBtn = document.getElementById("restart-button");
   restartBtn.classList.add("hidden");
-
+  newuser.classList.add("hidden");
   leaderboardButton.classList.remove("hidden");
   startButton.style.display = "flex";
   console.log("restart-end");
