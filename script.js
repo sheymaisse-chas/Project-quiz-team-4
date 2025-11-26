@@ -24,11 +24,11 @@ const startButton = document.getElementById("start-button");
 const leaderboardButton = document.getElementById("leaderboard-button");
 const timeoutElement = document.querySelector(".timeout");
 
-const TOTAL_TIME_SECONDS = 600; // totala tid
+const TOTAL_TIME_SECONDS = 180; // totala tid
 
 let countdownTime = TOTAL_TIME_SECONDS; //nuvarande tid
 let countdownInterval; //kontroll nyckel, stoppar timern och gör så att man kan börja om
-const QUESTION_LIMIT = 10;
+const QUESTION_LIMIT = 15;
 
 //Timer**
 function formatTime(totalSeconds) {
