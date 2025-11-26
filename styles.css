@@ -147,12 +147,37 @@ h1 {
 
 @media (max-width: 700px) {
   h1 {
-    font-size: 45px;
+    font-size: 40px;
   }
+
+  .userDiv {
+    font-size: 14px;
+  }
+
+  .new-user,
+  .theme-btn,
+  #pauseBtn {
+    font-size: 8px !important;
+  }
+
+  .new-user {
+    margin-top: 40px;
+  }
+
+  .theme-btn {
+    margin-top: 20px;
+  }
+
   #question-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  #question {
+    padding: 15px;
+    font-size: 14px;
+    margin-bottom: 30px;
   }
 
   #answer-one,
@@ -161,6 +186,11 @@ h1 {
   #answer-four {
     width: 95%;
     height: 50px;
+    font-size: 12px;
+  }
+
+  #countdown-display {
+    font-size: 12px;
   }
 
   body {
@@ -211,7 +241,8 @@ h1 {
 
 /* Gör knapparna lika stora och snyggt matchade */
 .show-start,
-.leaderboard-btn, .answers {
+.leaderboard-btn,
+.answers {
   display: flex;
   justify-content: center;
   position: relative;
@@ -227,7 +258,9 @@ h1 {
   transition: color 0.3s, border-color 0.3s;
 }
 
-.show-start::before, .leaderboard-btn::before, .answers::before {
+.show-start::before,
+.leaderboard-btn::before,
+.answers::before {
   content: "";
   position: absolute;
   top: 0;
@@ -238,11 +271,15 @@ h1 {
   transition: all 0.3s ease;
 }
 
-.show-start:hover::before, .leaderboard-btn:hover::before, .answers:hover::before {
+.show-start:hover::before,
+.leaderboard-btn:hover::before,
+.answers:hover::before {
   left: 0;
 }
 
-.show-start:hover, .leaderboard-btn:hover, .answers:hover {
+.show-start:hover,
+.leaderboard-btn:hover,
+.answers:hover {
   color: rgb(255, 255, 255);
   border-color: #fb923c;
 }
@@ -258,7 +295,8 @@ h1 {
   border-color: #fb923c;
 }
 
-.leaderboard-btn, .show-start {
+.leaderboard-btn,
+.show-start {
   margin-top: 2rem;
 }
 
@@ -291,7 +329,6 @@ h1 {
   overflow: hidden;
 }
 
-
 #leaderboard-list li {
   display: flex;
   justify-content: space-between;
@@ -316,22 +353,24 @@ h1 {
   font-weight: 200;
 }
 
-#leaderboard-list .firstRanked .rank{
+#leaderboard-list .firstRanked .rank {
   background: linear-gradient(90deg, gold, rgba(255, 215, 0, 0.1));
   font-weight: 600;
 }
 
-#leaderboard-list .secondRanked .rank{
+#leaderboard-list .secondRanked .rank {
   background: linear-gradient(90deg, silver, rgba(192, 192, 192, 0.1));
   font-weight: 600;
 }
 
-#leaderboard-list .thirdRanked .rank{
+#leaderboard-list .thirdRanked .rank {
   background: linear-gradient(90deg, #cd7f32, rgba(205, 127, 50, 0.1)); /* brons */
   font-weight: 600;
 }
 
-#leaderboard-list .thirdRanked, #leaderboard-list .secondRanked, #leaderboard-list .firstRanked {
+#leaderboard-list .thirdRanked,
+#leaderboard-list .secondRanked,
+#leaderboard-list .firstRanked {
   font-weight: 600;
 }
 
@@ -429,17 +468,23 @@ h1 {
   font-size: 1.25rem;
 }
 
-
 @keyframes correctBlink {
-  0% { background-color: rgba(176, 192, 3, 0.7); }
-  25% { background-color:rgba(176, 192, 3, 0.4); } 
-  50% { background-color: rgba(176, 192, 3, 0.7); }
-  75% { background-color: rgba(176, 192, 3, 0.4); } 
-  100% { background-color: rgba(176, 192, 3 0.7); }
-
+  0% {
+    background-color: rgba(176, 192, 3, 0.7);
+  }
+  25% {
+    background-color: rgba(176, 192, 3, 0.4);
+  }
+  50% {
+    background-color: rgba(176, 192, 3, 0.7);
+  }
+  75% {
+    background-color: rgba(176, 192, 3, 0.4);
+  }
+  100% {
+    background-color: rgba(176, 192, 3 0.7);
+  }
 }
-
-
 
 .wrong {
   display: flex;
@@ -451,11 +496,21 @@ h1 {
 }
 
 @keyframes wrongBlink {
-  0% { background-color: rgba(255, 90, 40, 0.5); }
-  25% { background-color: rgba(255, 77, 28, 0.7); } 
-  50% { background-color: rgba(255, 90, 40, 0.5); }
-  75% { background-color: rgba(255, 77, 28, 0.7); }
-  100% { background-color: rgba(255, 90, 40, 0.5); } 
+  0% {
+    background-color: rgba(255, 90, 40, 0.5);
+  }
+  25% {
+    background-color: rgba(255, 77, 28, 0.7);
+  }
+  50% {
+    background-color: rgba(255, 90, 40, 0.5);
+  }
+  75% {
+    background-color: rgba(255, 77, 28, 0.7);
+  }
+  100% {
+    background-color: rgba(255, 90, 40, 0.5);
+  }
 }
 
 @keyframes wrongShake {
@@ -491,24 +546,24 @@ h1 {
   font-weight: lighter;
 }
 
-.start-icon{
-  vertical-align: middle; 
-  width: 1.75em; 
+.start-icon {
+  vertical-align: middle;
+  width: 1.75em;
   height: 1.75em;
-  fill: currentColor; 
-  margin-right: 0.25rem; 
+  fill: currentColor;
+  margin-right: 0.25rem;
   margin-top: 0.5rem;
 }
 .pause-icon {
-  vertical-align: middle; 
-  width: 1.5em; 
+  vertical-align: middle;
+  width: 1.5em;
   height: 1.25em;
-  fill: currentColor; 
-  margin-right: -0.75rem; 
+  fill: currentColor;
+  margin-right: -0.75rem;
   margin-bottom: 0.25rem;
 }
 
-.pause-button{
+.pause-button {
   font-family: "Press Start 2P", system-ui;
   font-size: 1rem;
   border: none;
@@ -532,14 +587,14 @@ h1 {
 .pause-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .35s ease;
+  transition: opacity 0.35s ease;
   overflow: hidden;
 }
 
@@ -548,13 +603,7 @@ h1 {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-      to bottom,
-      rgba(0,255,70,0.2) 0px,
-      rgba(0,255,70,0.08) 2px,
-      transparent 3px,
-      transparent 6px
-    );
+  background: repeating-linear-gradient(to bottom, rgba(0, 255, 70, 0.2) 0px, rgba(0, 255, 70, 0.08) 2px, transparent 3px, transparent 6px);
   animation: matrixRain 15s linear infinite;
   mix-blend-mode: screen;
   opacity: 0.4;
@@ -568,28 +617,36 @@ h1 {
   font-size: 22px;
   line-height: 28px;
   white-space: nowrap;
-  color: rgba(0,255,70,0.15);
+  color: rgba(0, 255, 70, 0.15);
   animation: matrixScroll 12s linear infinite;
 }
 
 /* animationer */
 @keyframes matrixRain {
-  from { transform: translateY(-100%); }
-  to   { transform: translateY(100%); }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }
 
 @keyframes matrixScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 /* popup */
 .pause-popup {
   position: relative;
   z-index: 10;
-  background: rgba(0,0,0,0.85);
-  border: 1px solid rgba(0,255,70,0.4);
-  box-shadow: 0 0 15px rgba(0,255,70,0.4);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(0, 255, 70, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 70, 0.4);
   color: #00ff41;
   padding: 25px;
   border-radius: 15px;
@@ -597,7 +654,7 @@ h1 {
   width: 300px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity .35s ease, transform .35s ease;
+  transition: opacity 0.35s ease, transform 0.35s ease;
   font-family: monospace;
 }
 
@@ -631,8 +688,9 @@ h1 {
 }
 
 /* gömmer overlay */
-.hidden { display: none; }
-
+.hidden {
+  display: none;
+}
 
 .userDiv {
   color: white;
@@ -664,9 +722,17 @@ h1 {
 }
 
 @keyframes fxBurst {
-  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
-  80%  { opacity: 1; }
-  100% { transform: translate(var(--dx), var(--dy)) scale(1.7); opacity: 0; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1.7);
+    opacity: 0;
+  }
 }
 
 /* Fail falling skulls */
@@ -675,9 +741,16 @@ h1 {
 }
 
 @keyframes fxFall {
-  0%   { transform: translate(0, 0) scale(1);   opacity: 1; }
-  100% { transform: translate(var(--dx), 300px) scale(1.4); opacity: 0; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), 300px) scale(1.4);
+    opacity: 0;
+  }
 }
+<<<<<<< HEAD
 
 #c {
   position: fixed;
@@ -693,3 +766,5 @@ h1 {
 
 
 
+=======
+>>>>>>> Adrian
