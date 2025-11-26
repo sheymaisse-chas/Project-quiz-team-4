@@ -412,7 +412,7 @@ h1 {
   position: absolute;
   top: 0;
   font-weight: lighter;
-  margin-top: 4rem;
+  margin-top: 5.5rem;
 }
 
 /* Responsivitet */
@@ -433,6 +433,10 @@ h1 {
   #start-button,
   #leaderboard-button {
     width: 90%;
+  }
+
+  .new-user {
+    margin-top: 4.5rem;
   }
 }
 
