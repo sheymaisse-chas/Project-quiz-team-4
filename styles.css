@@ -47,20 +47,30 @@ canvas {
   display: block;
 }
 
+.quizscript-title {
+  display: flex;
+  color: white;
+  font-size: 24px; 
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
   color: white;
-  font-size: 80px; 
+  font-size: 48px; 
   font-family: "Source Code Pro", monospace;
   margin-bottom: 80px;
 }
 
 .user-name {
+  background-color: rgba(71, 71, 71, 0.5);
+  color: white;
   display: block;
   padding: 10px;
   margin-bottom: 32px;
   text-align: center;
   border-radius: 8px;
-  border: none;
+  border: solid white 1px;
   font-family: "Source Code Pro", monospace;
 }
 
