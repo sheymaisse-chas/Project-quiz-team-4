@@ -1,4 +1,4 @@
-const QUESTION_LIMIT = 1;
+const QUESTION_LIMIT = 15;
 
 export async function getQuizQuestions() {
   try {

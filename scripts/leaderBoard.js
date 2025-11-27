@@ -18,7 +18,7 @@ export async function showLeaderboard() {
     return b.timeRemaining - a.timeRemaining;
   });
 
-  const topTen = results.slice(0, 10);
+  const topTen = results.slice(0, 30);
 
   topTen.forEach((r, i) => {
     const li = document.createElement("li");
